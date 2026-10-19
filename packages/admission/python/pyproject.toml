@@ -13,8 +13,14 @@ license = "Apache-2.0"
 # refuses copy drift before CI builds or installs the package.
 license-files = ["LICENSE"]
 authors = [{ name = "Sankalp Gilda" }]
+keywords = ["attestation", "sbom", "in-toto", "digest", "admission-control", "supply-chain-security"]
 classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
     "Topic :: Security",
     "Topic :: Software Development :: Quality Assurance",
 ]
@@ -23,6 +29,7 @@ dependencies = []
 [project.urls]
 Source = "https://github.com/probityai/agent-evidence/tree/main/packages/admission"
 Documentation = "https://github.com/probityai/agent-evidence/blob/main/packages/admission/python/README.md"
+Issues = "https://github.com/probityai/agent-evidence/issues"
 
 [project.scripts]
 agent-evidence-admission = "agent_evidence_admission.cli:main"
