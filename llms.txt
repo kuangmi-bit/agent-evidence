@@ -6,3 +6,4 @@
 
 - [Layout and releases](https://github.com/probityai/agent-evidence/blob/main/docs/LAYOUT.md): directories, CI, tag prefixes and publishing
 - [Governance](https://github.com/probityai/agent-evidence/blob/main/GOVERNANCE.md): roles, the maintainer path and decisions
+- [Used by](https://github.com/probityai/agent-evidence/blob/main/docs/USED-BY.md): outside projects that run the vectors in CI

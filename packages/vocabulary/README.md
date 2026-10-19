@@ -12,6 +12,8 @@ term to mean one thing across vendors, including teams who want to map their own
 
 Install the Python package: `pip install agent-evidence-vocabulary==0.5.0`.
 
+Verified by Probity (github.com/probityai/probity). The `probityai` command line is planned, not yet released: `uv add probityai`, then `pip install probityai`.
+
 ## Quick start
 
 Pin the registry at a release and check its digest:
