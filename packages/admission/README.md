@@ -6,6 +6,8 @@ Kyverno and sigstore policy-controller policies.
 For integrators who bind a document to release bytes, and platform engineers who gate workloads
 on declared execution evidence.
 
+Verified by Probity (github.com/probityai/probity). The `probityai` command line is planned, not yet released: `uv add probityai`, then `pip install probityai`.
+
 ## Check an artifact digest
 
 Start in a new directory with Python 3.10 or newer and [uv](https://github.com/astral-sh/uv).
