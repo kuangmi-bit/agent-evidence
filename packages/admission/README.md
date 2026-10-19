@@ -15,7 +15,7 @@ Install the checker in its own environment, then check a synthetic in-toto state
 
 ```sh
 uv venv admission-env
-uv pip install --python admission-env/bin/python agent-evidence-admission==0.1.0
+uv pip install --python admission-env/bin/python agent-evidence-admission==0.1.1
 printf 'abc' > artifact.txt
 cat > statement.json <<'JSON'
 {
@@ -69,7 +69,7 @@ It prints `true`. `opa test --timeout 120s rego/` runs the oracle's own test sui
 
 ## Status
 
-The Python digest checker is version 0.1.0.
+The Python digest checker is version 0.1.1.
 The policies follow the in-toto Adversarial Execution Evidence predicate v0.7, proposed in
 [in-toto/attestation#570](https://github.com/in-toto/attestation/pull/570). The profile registry
 measures them against the [agent-evidence-vectors](https://github.com/probityai/agent-evidence-vectors) corpus
