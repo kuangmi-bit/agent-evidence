@@ -37,6 +37,8 @@ def run(wheel, sdist, source_root):
         "wrong-wheel-tag": {info + "/WHEEL": entries[info + "/WHEEL"][1].replace(b"py3-none-any", b"cp312-none-any")},
         "undeclared-dependency": {metadata: entries[metadata][1].replace(b"\n\n", b"\nRequires-Dist: unowned-package==1\n\n", 1)},
         "undeclared-metadata": {metadata: entries[metadata][1].replace(b"\n\n", b"\nUnowned-Field: value\n\n", 1)},
+        "reordered-classifier": {metadata: entries[metadata][1].replace(b"Classifier: Development Status :: 3 - Alpha\n", b"", 1).replace(b"Classifier: Topic :: Security\n", b"Classifier: Topic :: Security\nClassifier: Development Status :: 3 - Alpha\n", 1)},
+        "undeclared-classifier": {metadata: entries[metadata][1].replace(b"Classifier: Topic :: Security\n", b"Classifier: Topic :: Security\nClassifier: Framework :: Unowned\n", 1)},
         "wrong-dynamic-field": {metadata: entries[metadata][1].replace(b"Dynamic: license-file", b"Dynamic: version")},
         "changed-entry-points": {points: point_bytes},
         "escaped-wheel-path": {"../unowned.txt": b"outside"},

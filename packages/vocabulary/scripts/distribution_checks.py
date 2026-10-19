@@ -37,12 +37,15 @@ def check_wheel_metadata(archive, info: str, root: Path, project: dict, package:
     if authors:
         singles["Author"] = ", ".join(author["name"] for author in authors)
     repeated = {"Project-URL", "License-File"}
+    if project.get("classifiers"):
+        repeated.add("Classifier")
     require(set(metadata.keys()) == set(singles) | repeated, "declared metadata field population")
     for key, value in singles.items():
         require(metadata.get_all(key) == [value], "wheel metadata: " + key)
     require(metadata.get_payload(decode=True) == (root / project["readme"]).read_bytes(), "wheel README bytes")
     require(Counter(metadata.get_all("Project-URL", [])) == Counter(
         f"{key}, {value}" for key, value in project["urls"].items()), "wheel project URLs")
+    require(metadata.get_all("Classifier", []) == list(project.get("classifiers", [])), "wheel classifiers")
     require(Counter(metadata.get_all("License-File", [])) == Counter(licenses), "wheel license fields")
     for name in licenses:
         require(archive.read(info + "/licenses/" + name) == (root / name).read_bytes(), "wheel license bytes")
