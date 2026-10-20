@@ -49,3 +49,12 @@ prefix = "agent-evidence-vocabulary"
 name = "agent-evidence-vocabulary"
 registry = "pypi"
 directory = "packages/vocabulary"
+
+# The same distribution under a separate tag, for publishing the Python package
+# of a data release whose own tag already exists and must not move (the
+# agent-evidence-vocabulary-python-v0.5.0 tag is the earlier case).
+[[unit]]
+prefix = "agent-evidence-vocabulary-python"
+name = "agent-evidence-vocabulary"
+registry = "pypi"
+directory = "packages/vocabulary"

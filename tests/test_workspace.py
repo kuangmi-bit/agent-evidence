@@ -78,6 +78,12 @@ def test_a_bad_tag_is_refused(repo: Path, tag: str, message: str) -> None:
         workspace.release_target(tag, repo)
 
 
+def test_the_vocabulary_python_tag_resolves_in_this_repository() -> None:
+    got = workspace.release_target("agent-evidence-vocabulary-python-v0.6.0")
+    assert got["name"] == "agent-evidence-vocabulary" and got["registry"] == "pypi"
+    assert got["prefix"] == "agent-evidence-vocabulary-python"
+
+
 def test_the_repository_itself_reads_cleanly() -> None:
     assert isinstance(workspace.areas(), list)
     with pytest.raises(SystemExit, match="names no single unit|does not match"):

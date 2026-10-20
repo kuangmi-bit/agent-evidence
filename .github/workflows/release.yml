@@ -19,6 +19,7 @@ name: release
 #   jcs-admit-npm-v             npm        crates/jcs-admit/npm (the tarball crate-jcs-admit-npm.yml qualified)
 #   agent-evidence-vectors-v    PyPI       the vectors distribution
 #   agent-evidence-vocabulary-v PyPI       the vocabulary distribution
+#   agent-evidence-vocabulary-python-v PyPI  the same distribution, when the data tag exists already
 #   agent-evidence-admission-v  PyPI       the admission distribution
 #
 # resolve refuses a tag whose unit is not in release.toml yet, whose directory
@@ -357,7 +358,7 @@ jobs:
 
   publish-agent-evidence-vocabulary:
     needs: [resolve, build-python]
-    if: needs.resolve.outputs.prefix == 'agent-evidence-vocabulary'
+    if: needs.resolve.outputs.prefix == 'agent-evidence-vocabulary' || needs.resolve.outputs.prefix == 'agent-evidence-vocabulary-python'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     environment:

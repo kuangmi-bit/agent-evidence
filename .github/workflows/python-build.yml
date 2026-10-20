@@ -43,7 +43,9 @@ jobs:
           set -euo pipefail
           SOURCE_DATE_EPOCH="$(git show -s --format=%ct HEAD)"
           export SOURCE_DATE_EPOCH
-          uv build --out-dir dist "$DIRECTORY"
+          # uv writes a .gitignore into its output directory unless told not to, and the
+          # count below admits exactly the wheel and the source distribution.
+          uv build --no-create-gitignore --out-dir dist "$DIRECTORY"
           stem="${DISTRIBUTION//-/_}-$VERSION"
           ls dist
           test "$(find dist -type f | wc -l)" -eq 2
