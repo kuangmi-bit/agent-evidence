@@ -10,7 +10,7 @@ and how much of a population the claim covers.
 It's for anyone who writes a predicate, a verifier or an evidence format for agents and needs each
 term to mean one thing across vendors, including teams who want to map their own fields onto it.
 
-Install the Python package: `pip install agent-evidence-vocabulary==0.5.0`.
+Install the Python package: `pip install agent-evidence-vocabulary==0.6.0`.
 
 Verified by Probity (github.com/probityai/probity). The `probityai` command line is planned, not yet released: `uv add probityai`, then `pip install probityai`.
 
