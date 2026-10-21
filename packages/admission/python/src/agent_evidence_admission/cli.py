@@ -19,7 +19,7 @@ def _parser() -> argparse.ArgumentParser:
     commands = parser.add_subparsers(dest="command", required=True)
     digest = commands.add_parser(
         "digest-check",
-        help="check that an artifact has a digest its document (TEA, CycloneDX, in-toto) names",
+        help="check that an artifact has a digest its document (TEA, CycloneDX, in-toto, OCI manifest) names",
     )
     digest.add_argument("document", help="path or https URL of the document that names the digest")
     digest.add_argument("artifact", help="path or https URL of the artifact the document covers")

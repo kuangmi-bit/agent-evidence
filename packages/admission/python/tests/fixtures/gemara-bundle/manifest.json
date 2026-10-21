@@ -1,0 +1,24 @@
+{
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "artifactType": "application/vnd.gemara.bundle.v1",
+    "config": {
+        "mediaType": "application/vnd.gemara.manifest.v1+json",
+        "digest": "sha256:9a7ea80225acabbafc7574a13c54e0dad2b47842687e029423d1d13ecb73f75f",
+        "size": 153
+    },
+    "layers": [
+        {
+            "mediaType": "application/vnd.gemara.artifact.v1+yaml",
+            "digest": "sha256:ec84448608b81dc12bccc964d5b1359f3151107609a1a03bc1f0b89575fcf9e1",
+            "size": 922,
+            "annotations": {
+                "org.gemara.artifact.role": "artifact",
+                "org.opencontainers.image.title": "minimal-catalog.yaml"
+            }
+        }
+    ],
+    "annotations": {
+        "org.opencontainers.image.created": "2026-10-21T09:13:55Z"
+    }
+}

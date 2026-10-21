@@ -1,6 +1,6 @@
 # agent-evidence-admission
 
-Checks that an artifact has the digest its document names: a TEA artifact, a CycloneDX SBOM or VEX, or an in-toto statement.
+Checks that an artifact has the digest its document names: a TEA artifact, a CycloneDX SBOM or VEX, an in-toto statement, or an OCI image manifest or index.
 
 It is for manufacturers, integrators and admission controllers that receive a compliance document for a release and need to know the document covers the bytes they actually hold.
 
@@ -11,7 +11,7 @@ Install the checker in its own environment:
 
 ```sh
 uv venv admission-env
-uv pip install --python admission-env/bin/python agent-evidence-admission==0.1.2
+uv pip install --python admission-env/bin/python agent-evidence-admission==0.2.0
 ```
 
 ## Example
@@ -42,7 +42,14 @@ A match binds the document to bytes. It does not verify a signature or admit a w
 For an existing CycloneDX SBOM and JAR, provide both files in your working directory:
 
 ```bash
-uvx agent-evidence-admission==0.1.2 digest-check bom.json log4j-core-2.26.1.jar
+uvx agent-evidence-admission==0.2.0 digest-check bom.json log4j-core-2.26.1.jar
+```
+
+For an OCI image manifest, as `oras manifest fetch <reference>` prints it, and a file pulled from that image, the check passes when the file is the manifest's config or one of its layers. A manifest's `subject` names a different artifact and is not counted:
+
+```bash
+oras manifest fetch ghcr.io/org/bundle:v1 > manifest.json
+uvx agent-evidence-admission==0.2.0 digest-check manifest.json catalog.yaml
 ```
 
 The check runs three steps: read the document (a path or an https URL), recompute the artifact's digest with every algorithm the document names, and compare. It prints one line and exits 0 when a named digest matches:
@@ -55,7 +62,7 @@ It exits 1 with `FAIL digest-mismatch` when the bytes differ, or `FAIL no-digest
 
 ## Status
 
-Version 0.1.2. The Kubernetes admission policies (Rego, Kyverno, policy-controller) live in the same repository; see the [repository README](https://github.com/probityai/agent-evidence/tree/main/packages/admission#readme).
+Version 0.2.0. The Kubernetes admission policies (Rego, Kyverno, policy-controller) live in the same repository; see the [repository README](https://github.com/probityai/agent-evidence/tree/main/packages/admission#readme).
 
 ## Build packages
 

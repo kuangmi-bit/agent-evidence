@@ -1,8 +1,9 @@
 """The three-step digest check.
 
 1. Read the document that describes an artifact: a TEA artifact (``formats[].checksums``), a
-   CycloneDX BOM in JSON or XML (``metadata.component.hashes``), or an in-toto statement
-   (``subject[].digest``), bare or in a DSSE envelope.
+   CycloneDX BOM in JSON or XML (``metadata.component.hashes``), an in-toto statement
+   (``subject[].digest``), bare or in a DSSE envelope, or an OCI image manifest
+   (``config.digest`` and ``layers[].digest``) or image index (``manifests[].digest``).
 2. Recompute the artifact's digest with every algorithm the document names.
 3. Pass only when one named digest equals the recomputed one.
 
@@ -68,6 +69,9 @@ def _subject_entries(document: Any) -> Iterator[tuple[str, str]]:
     """
     if not isinstance(document, dict):
         return
+    if _is_oci(document):
+        yield from _oci_entries(document)
+        return
     # DSSE envelope: the statement is the base64 payload.
     if isinstance(document.get("payload"), str) and "payloadType" in document:
         try:
@@ -94,6 +98,53 @@ def _subject_entries(document: Any) -> Iterator[tuple[str, str]]:
     for fmt in formats if isinstance(formats, list) else []:
         if isinstance(fmt, dict):
             yield from _hash_entries(fmt.get("checksums"), "algType", "algValue")
+
+
+#: Media types of the OCI and Docker documents whose descriptors name content by digest.
+OCI_MANIFEST_TYPES = frozenset({
+    "application/vnd.oci.image.manifest.v1+json",
+    "application/vnd.docker.distribution.manifest.v2+json",
+})
+OCI_INDEX_TYPES = frozenset({
+    "application/vnd.oci.image.index.v1+json",
+    "application/vnd.docker.distribution.manifest.list.v2+json",
+})
+
+
+def _is_oci(document: dict[str, Any]) -> bool:
+    media_type = document.get("mediaType")
+    if media_type in OCI_MANIFEST_TYPES or media_type in OCI_INDEX_TYPES:
+        return True
+    # The image-spec makes mediaType optional; schemaVersion 2 with a layers or manifests list is
+    # the shape a registry returns either way.
+    return document.get("schemaVersion") == 2 and (
+        isinstance(document.get("layers"), list) or isinstance(document.get("manifests"), list)
+    )
+
+
+def _descriptor_digest(descriptor: Any) -> Iterator[tuple[str, str]]:
+    """The (algorithm, hex) of an OCI descriptor's ``digest``, written ``<algorithm>:<hex>``."""
+    digest = descriptor.get("digest") if isinstance(descriptor, dict) else None
+    if not isinstance(digest, str) or ":" not in digest:
+        return
+    name, value = digest.split(":", 1)
+    algorithm = _algorithm(name)
+    if algorithm and value:
+        yield algorithm, value.strip().lower()
+
+
+def _oci_entries(document: dict[str, Any]) -> Iterator[tuple[str, str]]:
+    """The content an OCI manifest or index is made of: its config and layers, or its manifests.
+
+    A manifest's ``subject`` names the OTHER artifact a referrer (a signature, an attestation) is
+    about, so it is left out, the same way a BOM's dependencies are: the bytes it names are not the
+    content this document carries.
+    """
+    yield from _descriptor_digest(document.get("config"))
+    for key in ("layers", "manifests"):
+        items = document.get(key)
+        for descriptor in items if isinstance(items, list) else []:
+            yield from _descriptor_digest(descriptor)
 
 
 def declared_digests(document: Any) -> list[tuple[str, str]]:
