@@ -314,6 +314,12 @@ P-78 = "none"
 "P-110" = "none"
 "P-111" = "none"
 
+# Second approved-SQL reader rerun at a fixed source pin.
+"P-112" = "none"
+
+# Filed-run listing changes as runs are filed; the rerun results are source-bound.
+"P-113" = 7
+
 # Exact immutable Pages upload contract and retained workflow bytes.
 "C-37" = "none"
 

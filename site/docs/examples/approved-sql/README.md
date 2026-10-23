@@ -21,7 +21,8 @@ The reader compares supplied records. It does not authenticate them or prove tha
 | [Input contract](docs/INPUT-CONTRACT.md) | Fields, exact comparisons, outputs, and native input needed |
 | [Source map](SOURCE-MAP.md) | Cho's case, pinned Tadpole source, and the actual native boundaries |
 | [Design decisions](docs/architecture/DESIGN_DECISIONS.md) | Why SQL bytes, outcome, and later state stay separate |
-| [Join the case](https://github.com/probityai/agent-evidence-atlas/issues/49) | Bring a native pair, another reader, or a check to keep |
+| [Other readers](docs/READERS.md) | A second reader written from the contract, and the Motebit triad, with our reruns |
+| [Join the case](https://github.com/probityai/agent-evidence/issues/27) | Bring a native pair, another reader, or a check to keep |
 
-Cho HyunJong (`hangum`) supplied the case in [the Lab thread](https://github.com/probityai/agent-evidence-atlas/issues/49#issuecomment-6072475161).
+Cho HyunJong (`hangum`) supplied the case in [the Lab thread](https://github.com/probityai/agent-evidence/issues/24#issuecomment-6247269344).
 We own this illustration's fields and code. The producer owns its export semantics.

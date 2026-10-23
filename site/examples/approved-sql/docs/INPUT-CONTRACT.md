@@ -31,10 +31,29 @@ A matching record must agree with approval on SQL bytes, typed parameters, every
 The application record must also agree with the audit on the request and outcome.
 
 `recorded_commit_matches` means those supplied records agree and their supplied outcome says successful and committed.
+It also needs `approval.granted: true` and an application record: `granted: false` and `application: null` each prevent it.
 It is not authenticity, durable database state, exactly-once execution, policy correctness, or native qualification.
 The CLI returns 0 for that result, 1 for another assessment, and 2 for invalid input.
 A later byte difference leaves an earlier matching commit result intact. `later_change_attribution` always remains `not_assessed`.
 The comparison does not establish when the supplied values were captured or who made a change.
+
+## Result values
+
+The reader returns one `result`. It applies these checks in order and stops at the first that holds:
+
+1. No audit record matches the request: `no_match_in_declared_complete_scope` when the declared scope is complete and matches the approval, otherwise `insufficient_audit_evidence`.
+2. More than one audit record matches: `ambiguous_database_join`.
+3. `approval.granted` is `false`: `approval_not_granted`.
+4. The matching record differs from the approval: `execution_differs_from_approval`.
+5. `application` is `null`: `application_record_missing`.
+6. The application record differs from the audit on the call or the outcome: `application_audit_disagreement`.
+7. The statement failed: `statement_failed`.
+8. The transaction rolled back: `transaction_rolled_back`.
+9. The transaction is `unknown`: `commit_not_established`.
+10. Otherwise: `recorded_commit_matches`.
+
+Invalid input prints `invalid_input` with an error on standard error and exits 2.
+`later_state` is `not_supplied`, `target_not_comparable`, `supplied_state_unchanged` or `supplied_state_differs`. It never changes `result`.
 
 Native work needs one versioned Settle approval, its application resource and SQL child record, and a corresponding database-native audit event.
 Keep the original bytes and the export version. Document the join, bound parameters, execution-time context, database principal, transaction outcome, and collection boundary.

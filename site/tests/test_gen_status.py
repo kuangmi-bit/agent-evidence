@@ -131,4 +131,45 @@ def test_start_entry_must_name_an_open_cell():
 def test_committed_page_matches_its_data():
     register = json.loads((ROOT / "data/lab-register.json").read_text(encoding="utf-8"))
     cells = tomllib.loads((ROOT / "data/open-cells.toml").read_text(encoding="utf-8"))
-    assert (ROOT / "src/status.md").read_text(encoding="utf-8") == gen.render(register, cells)
+    filed = tomllib.loads((ROOT / "data/filed-runs.toml").read_text(encoding="utf-8"))
+    assert (ROOT / "src/status.md").read_text(encoding="utf-8") == gen.render(register, cells, filed)
+
+
+def filed_runs():
+    return {"run": [{"issue": 7, "filed_by": "someone", "filed": "2026-10-20", "question": "does b show x",
+                     "case": 3, "cell": ["mech:b", "prop:x"], "operation": "author-operated",
+                     "filer_result": "b accepts one row"},
+                    {"issue": 9, "filed_by": "other", "filed": "2026-10-21", "question": "does a show x",
+                     "case": 3, "operation": "outside-operated", "filer_result": "same axes",
+                     "rerun": "2026-10-22: reproduced"}],
+            "take": [{"cell": ["mech:b", "prop:x"], "by": "taker", "said": "https://example.org/said",
+                      "work": "built a reader"}]}
+
+
+def test_filed_runs_are_listed_with_their_operation_and_rerun():
+    page = gen.render({"records": [record("p-run", ["pass"], {"runner": "Probity CI"})]}, open_cells(), filed_runs())
+    table = page.split("## Filed runs", 1)[1].split("## Every record", 1)[0]
+    assert "| [#7](https://github.com/probityai/agent-evidence/issues/7) | `someone` |" in table
+    assert "| author-operated | b accepts one row | not rerun yet |" in table
+    assert "| outside-operated | same axes | 2026-10-22: reproduced |" in table
+
+
+def test_takes_and_runs_appear_under_their_start_cell():
+    page = gen.render({"records": [record("p-run", ["pass"], {"runner": "Probity CI"})]}, open_cells(), filed_runs())
+    start = page.split("## Open cells: take one", 1)[1].split("## Filed runs", 1)[0]
+    assert "Taken by `taker` ([said so](https://example.org/said)): built a reader." in start
+    assert "Filed runs naming this cell: [#7](https://github.com/probityai/agent-evidence/issues/7)." in start
+    assert "#9" not in start
+
+
+@pytest.mark.parametrize("mutate", [
+    lambda f: f["run"][0].update(operation="independent"),
+    lambda f: f["run"][0].update(cell=["mech:missing", "prop:x"]),
+    lambda f: f["run"].append(dict(f["run"][1])),
+    lambda f: f["take"][0].update(cell=["mech:a", "prop:missing"]),
+])
+def test_filed_runs_that_do_not_fit_are_refused(mutate):
+    filed = filed_runs()
+    mutate(filed)
+    with pytest.raises(ValueError):
+        gen.render({"records": [record("p-run", ["pass"], {"runner": "Probity CI"})]}, open_cells(), filed)

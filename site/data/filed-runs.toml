@@ -1,0 +1,87 @@
+# Every Evidence run filed as an issue in probityai/agent-evidence, and every open cell someone has said they take.
+# Edit this file by hand when a run is filed, rerun or answered; tools/gen_status.py renders it on the status page.
+#
+# operation is one of:
+#   author-operated   the filer wrote the software or fixture under test and ran it
+#   outside-operated  someone who did not write the software or fixture ran it; independence is not established
+# rerun, when present, is what Probity reran from the filed pins, on which date.
+
+[[run]]
+issue = 28
+filed_by = "babyblueviper1"
+filed = "2026-10-14"
+question = "Does the covering decision precede a payment whose EIP-3009 nonce carries the decision reference?"
+case = 26
+cell = ["mech:policy-decision-point", "prop:effect"]
+operation = "author-operated"
+filer_result = "10 of 10 cases match with both Base receipts re-read live; exhibit 3 stays UNRESOLVED because the run committed no execution policy"
+rerun = "2026-10-23: 10 of 10 at f82d691 with both receipts re-read live, recorded in the request-effect case table"
+recorded = "examples/request-effect-join/CASE-TABLE.md"
+
+[[run]]
+issue = 29
+filed_by = "ogasurfproject-jpg"
+filed = "2026-10-14"
+question = "Does the NENRIN provenance verifier refuse a well-signed grant and receipt with no outside observation of the run?"
+case = 25
+cell = ["mech:canonical-json-signature", "prop:occurrence"]
+operation = "author-operated"
+filer_result = "The JS reference, Python port and Go port agree on every row; the self-named provider row o04 is accepted with only a self_authorized finding, so it does not pass the cell"
+rerun = "2026-10-23: the JS reference (Node 24.19.0) and the Python port reproduce all 10 rows byte for byte at 257112c; the Go port was not run. Offline, four of the seven rows are accepted with no outside observation (o00, o04, o05, o09), each with a finding that says so; the evidence pointer is refused or confirmed only when a lookup is injected, and the run's lookup is a stub"
+
+[[run]]
+issue = 30
+filed_by = "imokokok"
+filed = "2026-10-12"
+question = "Do the PriorSeal exact-call v1.0.1 profile and a separately written reader agree on the envelope binding?"
+case = 24
+cell = ["mech:canonical-json-signature", "prop:occurrence"]
+operation = "author-operated"
+filer_result = "Case 04 stays UNDETERMINED when no execution evidence is supplied"
+
+[[run]]
+issue = 31
+filed_by = "piiiico"
+filed = "2026-10-06"
+question = "Does the pinned run-contract vector reproduce on a host the vector's author does not run?"
+case = 24
+operation = "outside-operated"
+filer_result = "Three of three injected-failure cases matched on Agent Errata CI against the wrapper at b12879d5; a second run characterised the corrected wrapper"
+rerun = "2026-10-10: Probity checked the second run's artifact 11663833758; its 112 SHA256SUMS entries and 14 of 14 comparison records match"
+recorded = "examples/e030-corrected-wrapper/README.md"
+
+[[run]]
+issue = 35
+filed_by = "Rul1an"
+filed = "2026-10-18"
+question = "Does Assay 6.14.0 accept the retained incident package and refuse a one-byte change inside a retained object?"
+case = 24
+operation = "author-operated"
+filer_result = "The intact package is package_verified with exit 0; the changed package is package_refused, input_shape, exit 2"
+
+[[run]]
+issue = 50
+filed_by = "piiiico"
+filed = "2026-10-23"
+question = "Does the Observer tool-manifest effect give the same six axes when someone other than its authors runs it on another platform?"
+case = 24
+operation = "outside-operated"
+filer_result = "A non-author replay of kenneives's author-operated run posted on #24: same six axes on Linux aarch64, run and verify exit 0, and with the recorded run time restored both output files hash to the author's values"
+
+[[take]]
+cell = ["mech:policy-decision-point", "prop:effect"]
+by = "giskard09"
+said = "https://github.com/probityai/agent-evidence/issues/25#issuecomment-6247268727"
+work = "Built a decision-bound output commitment and, later, a reference verifier for execution-join-ref-v1. ogasurfproject-jpg's blind readers match the decision-bound verifier on all 11 cases at execution-join-ref-remora-bridge 062faff, and Probity's rerun there gives ALL 11 CHECKS PASS. COMMITMENT_AFTER_DECISION shows the output commitment could not exist before the decision, not that the write came after it, so the cell stays open for file effects"
+
+[[take]]
+cell = ["mech:canonical-json-signature", "prop:occurrence"]
+by = "ogasurfproject-jpg"
+said = "https://github.com/probityai/agent-evidence/issues/25#issuecomment-6247268568"
+work = "Filed run 29"
+
+[[take]]
+cell = ["mech:canonical-json-signature", "prop:occurrence"]
+by = "imokokok"
+said = "https://github.com/probityai/agent-evidence/issues/25#issuecomment-6247269492"
+work = "Scoped to PriorSeal v1.0.1 case 04 at 2ff89d8, where the outcome stays UNDETERMINED without independent execution evidence; no run filed for the cell yet"
