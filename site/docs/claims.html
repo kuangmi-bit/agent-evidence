@@ -2300,6 +2300,22 @@
 <td>Inspect the pinned source paths and linked draft schemas; compare their field meanings with the input contract and source map</td>
 <td>Dated source reading and a producer-published draft. No claim that the older engine is the current enterprise implementation, or that the nominated native pair has been supplied.</td>
 </tr>
+<tr data-read="2026-10-23">
+<td>P-112</td>
+<td>ogasurfproject-jpg’s approved-SQL reader at horizon-shield 5037ecf8, written from the input contract and fixture inputs only, agrees with the manifest on 16 of 16 exit codes, 4 of 16 result strings and 15 of 16 later_state values, and never splits a pair the manifest keeps together. The contract now lists all eleven result values in check order and states that <code>granted: false</code> and <code>application: null</code> each prevent <code>recorded_commit_matches</code>.</td>
+<td><code>examples/approved-sql/docs/READERS.md</code>; <code>docs/INPUT-CONTRACT.md</code> and <code>tests/test_contract.py</code> in that directory; <a href="https://github.com/ogasurfproject-jpg/horizon-shield/tree/5037ecf8a2195f2f17f1b47ca3d2b5f49ea0a0e0/workers/hs-ledger/nenrin/approved-sql-reader-v0">reader at 5037ecf8</a>; <a href="https://github.com/probityai/agent-evidence/issues/27#issuecomment-6247269456">his run</a></td>
+<td>2026-10-23 <span class="cadence">(does not expire)</span></td>
+<td>Fetch <code>reader.py</code> at 5037ecf8 (SHA-256 <code>fc87a6ec</code>) and run <code>python3 -I -B reader.py &lt;fixture&gt;</code> over <code>examples/approved-sql/fixtures</code>; compare each exit, result and later_state with <code>fixtures/manifest.json</code>; run the example tests</td>
+<td>A second reader by an outside author, written by a fenced AI agent and run by Probity on author-created fixtures. Its result names are its own. No native Tadpole export, database execution or independent operation of a deployment is established.</td>
+</tr>
+<tr data-read="2026-10-23" data-cadence-days="7">
+<td>P-113</td>
+<td>The claim status page lists six filed Evidence runs (#28, #29, #30, #31, #35, #50) with filer, operation class, the filer’s stated result and any Probity rerun, and records three takes on the two start cells. Probity reran #29 on 2026-10-23: the JS reference and the Python port reproduce all 10 rows byte for byte, and offline four of seven rows are accepted with no outside observation. The decision-bound verifier at execution-join-ref-remora-bridge 062faff prints ALL 11 CHECKS PASS.</td>
+<td><code>data/filed-runs.toml</code>; <code>src/status.md</code>; <a href="https://github.com/ogasurfproject-jpg/horizon-shield/tree/257112c33da98b21ba4b2772f98b48e704742106/workers/hs-ledger/nenrin/occurrence-cell-v0">run #29 at 257112c</a>; <a href="https://github.com/giskard09/execution-join-ref-remora-bridge/tree/062faff640e0800730f2fe47338f90dcfdef9ef6/decision-bound-output-v1">decision-bound verifier at 062faff</a>; <a href="https://github.com/probityai/agent-evidence/issues/25">open-cells thread</a></td>
+<td>2026-10-23 <span class="cadence">(7-day cadence)</span></td>
+<td>List the repository’s issues titled <code>[Evidence run]</code>; for #29 run <code>node run_occurrence.mjs ../sdk in.json out.json</code> and <code>python3 -B run_occurrence_py.py in.json out.json</code> at 257112c and compare with the pinned results; run <code>python3 verify_decision_bound.py</code> in <code>decision-bound-output-v1</code> at 062faff</td>
+<td>Filed runs are listed as their filers state them; a listing is not admission to the Lab register. Reruns are Probity-operated on outside-authored code and fixtures, not independent operation. Neither start cell is closed.</td>
+</tr>
 <tr data-read="2026-10-09">
 <td>P-85</td>
 <td>The request/effect case table freezes a proposed experiment against the selected execution-join contract: pre-dispatch rebinding, a later changed resource and a failed digest recomputation retain separate meanings. Declared, hashed-action and executor-configured targets remain separate experiment fields.</td>
