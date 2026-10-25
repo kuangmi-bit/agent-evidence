@@ -318,6 +318,7 @@ P-78 = "none"
 "P-112" = "none"
 "P-113" = "none"
 "P-114" = "none"
+"P-117" = "none"
 
 # Exact immutable Pages upload contract and retained workflow bytes.
 "C-37" = "none"

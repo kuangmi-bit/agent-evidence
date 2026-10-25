@@ -163,3 +163,24 @@ CPython 3.13.15 on 2026-10-24: 18 of 18 passed. The same four mutants, applied t
 | Rewrite vector with the effective preimage set equal to the approved one and `effective_action_ref` rehashed | `FAIL` on that vector, 17 of 18 |
 
 Both gaps are closed at `bc9449b`. Invariant 7 is still the producer's proposal.
+
+## A synthetic claim model beside the effect bridge
+
+`altrudev` compared Frequency's synthetic claim-status fixture with the REMORA effect bridge this table started from,
+in [`lab-claim-comparison.md` at `d0c707c`](https://github.com/altrudev/frequency-open-evidence-lab/blob/d0c707cc8df1aa79f145068581ed6cb2621f8ae0/docs/lab-claim-comparison.md)
+([request](https://github.com/probityai/agent-evidence/issues/24#issuecomment-6247272865)).
+The Lab takes that comparison as the first shared control between a claim model and an effect bridge, on its own terms:
+
+| Frequency row | Relationship to the REMORA effect bridge |
+| --- | --- |
+| AR-00, authorized and current effect confirmed | Semantically comparable, not provenance-equivalent |
+| AR-05, execution reported and current effect contradicted | Semantically comparable, not provenance-equivalent |
+| AR-01 to AR-04, refusals | Not equivalent: a refusal is observable, and an untouched store is not |
+| The other cross-product cells | No mapping claimed |
+
+Frequency's row names are its own; they are not the vector names in the producer verifier run above.
+Frequency compares supplied state strings and observes no write, so neither column carries over to the other.
+We ran `python3 -I check.py` and `python3 -I -m unittest discover -v` at `d0c707c` on CPython 3.13.15 on 2026-10-25:
+12 of 12 synthetic cases and 14 of 14 tests passed, matching the posted result. That is a rerun of the fixture's own
+code, not a second reader. A reader-neutral fixture contract for these seams, so a third reader can run against them
+without either implementation's internals, is the open contribution.

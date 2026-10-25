@@ -46,7 +46,7 @@ A digest here is the SHA-256 of the artifact's source file in the site's reposit
 | Verifier demonstration | 0.1 | 2026-09-27 | held | page not built in this repository yet | Held until it passes its release criteria |
 | [Experiments](experiments.md) | 0.5 | 2026-10-16 | draft | `11e849dc1744fbdc` `src/experiments.md` | Returns from the original admission experiment to its worked article and exact presentation packet |
 | Series plan | 0.1 | 2026-09-27 | held | page not built in this repository yet | Held until it passes its release criteria |
-| [Claim ledger](claims.md) | 0.8.37 | 2026-10-16 | draft | `24913e8faaa12926` `CLAIMS.md` | Binds the actual native Rust registry releases and preserves separate historical guide pins |
+| [Claim ledger](claims.md) | 0.8.37 | 2026-10-16 | draft | `de072b329a35a48e` `CLAIMS.md` | Binds the actual native Rust registry releases and preserves separate historical guide pins |
 | [Probity Open Evidence Lab](lab.md) | 0.1.16 | 2026-10-16 | draft | `26d47e1ca4f2d5cb` `src/lab.md` | Repairs three retained workflow download paths without changing original bytes or results |
 | [Claim status](status.md) | 0.4 | 2026-10-15 | draft | `e60cd2a6f0ff8193` `src/status.md` | Counts the five retained case records at their stated evidence classes; outside hosting does not imply independent custody |
 | [Task-grouped rates worked example](task-grouped-rates.md) | 0.1 | 2026-10-03 | draft | `92940ce8ee827ad0` `examples/task-grouped-rates/input.json` | Authored labels, paired task resampling, explicit weighting targets and unresolved outcomes |

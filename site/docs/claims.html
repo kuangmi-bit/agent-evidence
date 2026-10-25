@@ -2681,6 +2681,14 @@
 <td>Clone argentum-core at bc9449b and run <code>python3 examples/conformance/execution-join-ref/verify.py</code>; apply each mutant to <code>vectors.json</code>, rehashing the changed ref, and rerun</td>
 <td>Producer-authored vectors and verifier. Invariant 7 and POST_COMMIT_DIVERGENCE are proposals, not an adopted contract version. The four added vectors were written by the producer after our mutation report, so they are not blind.</td>
 </tr>
+<tr data-read="2026-10-25">
+<td>P-117</td>
+<td>altrudev’s Frequency fixture at d0c707c passes 12 of 12 synthetic cases and 14 of 14 tests; its comparison marks AR-00 and AR-05 semantically comparable to the REMORA effect bridge, not provenance-equivalent, and AR-01 to AR-04 not equivalent</td>
+<td><code>examples/request-effect-join/CASE-TABLE.md</code>; <a href="https://github.com/altrudev/frequency-open-evidence-lab/blob/d0c707cc8df1aa79f145068581ed6cb2621f8ae0/docs/lab-claim-comparison.md">comparison at d0c707c</a>; <a href="https://github.com/probityai/agent-evidence/issues/24#issuecomment-6247272865">request in #24</a></td>
+<td>2026-10-25 <span class="cadence">(does not expire)</span></td>
+<td>Download altrudev/frequency-open-evidence-lab at d0c707c and run <code>python3 -I check.py</code> and <code>python3 -I -m unittest discover -v</code></td>
+<td>A rerun of the fixture’s own code on supplied state strings; no write is observed and no second reader ran. The relationship column is the fixture author’s comparison, accepted as a shared control, not a provenance claim.</td>
+</tr>
 </tbody>
 </table>
 </div>
