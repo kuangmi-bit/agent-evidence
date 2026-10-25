@@ -22,8 +22,8 @@ It is for people who build or check an agent-evidence verifier, and for projects
 Pin the parts you use:
 
 ```bash
-uv add agent-evidence-vectors==0.20.0
-pip install agent-evidence-vectors==0.20.0
+uv add agent-evidence-vectors==0.25.0
+pip install agent-evidence-vectors==0.25.0
 cargo add dsse@0.1.5 jcs-admit@0.1.3
 pip install jcs-admit==0.1.0
 ```
@@ -33,7 +33,7 @@ pip install jcs-admit==0.1.0
 Run every vector of the default corpus through the bundled reference verifier. You need [uv](https://docs.astral.sh/uv/); nothing is cloned or built:
 
 ```bash
-uvx agent-evidence-vectors==0.20.0
+uvx agent-evidence-vectors==0.25.0
 ```
 
 The run prints one row per vector and ends with:

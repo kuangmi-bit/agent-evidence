@@ -18,8 +18,8 @@ Link the second line to your live result page, so a reader can open the run the 
 ## Run it yourself
 
 ```bash
-uv add agent-evidence-vectors==0.20.0
-pip install agent-evidence-vectors==0.20.0
+uv add agent-evidence-vectors==0.25.0
+pip install agent-evidence-vectors==0.25.0
 ```
 
 The `probityai` command line that will run the same check is planned and not yet released; its install lines will be `uv add probityai` and `pip install probityai`.
