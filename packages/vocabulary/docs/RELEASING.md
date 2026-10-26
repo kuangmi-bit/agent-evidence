@@ -43,9 +43,9 @@ once it is pushed.
 
 ## Python data distribution
 
-The Python package is `agent-evidence-vocabulary` 0.7.0. It contains the exact
-`vocabulary.yaml` bytes from data release `v0.7.0`, with SHA-256
-`7c0df368fe869d2ac8e17558d833fa9969df6751be9d57492f47c10c54170161`.
+The Python package is `agent-evidence-vocabulary` 0.8.0. It contains the exact
+`vocabulary.yaml` bytes from data release `v0.8.0`, with SHA-256
+`76233ba8924cebdf053f0449ce023186805156aedca4121b9b156bd747a411b4`.
 The repository keeps one copy of the YAML. The package maps that file directly
 into `agent_evidence_vocabulary`; no generated copy can drift from it.
 
@@ -54,7 +54,7 @@ After building the checked wheel, install it with a selected YAML parser:
 ```sh
 uv venv vocabulary-env --python 3.12
 uv pip install --python vocabulary-env/bin/python \
-  dist/agent_evidence_vocabulary-0.7.0-py3-none-any.whl PyYAML==6.0.3
+  dist/agent_evidence_vocabulary-0.8.0-py3-none-any.whl PyYAML==6.0.3
 vocabulary-env/bin/python - <<'PY'
 from importlib.resources import files
 import yaml

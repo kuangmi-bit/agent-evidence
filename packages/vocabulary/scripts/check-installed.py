@@ -18,7 +18,7 @@ version = metadata.version("agent-evidence-vocabulary")
 if vocabulary["meta"]["version"] != version:
     raise ValueError("installed distribution and registry versions differ")
 digest = hashlib.sha256(raw).hexdigest()
-if digest != "7c0df368fe869d2ac8e17558d833fa9969df6751be9d57492f47c10c54170161":
+if digest != "76233ba8924cebdf053f0449ce023186805156aedca4121b9b156bd747a411b4":
     raise ValueError("installed registry differs from the pinned registry")
 values = vocabulary["evidence_dimensions"]["observation_vantage"]["values"]
 if values != ["substrate", "artifact"]:

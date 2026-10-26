@@ -19,11 +19,11 @@
 #
 # Precedent for this shape: IANA JWT claim registry, JSON-LD @context registries.
 #
-# version: "0.7.0"
+# version: "0.8.0"
 # status: "draft - open for review"
 
 meta:
-  version: "0.7.0"
+  version: "0.8.0"
   status: "draft - open for review"
   spec_anchor: "spec/predicates/adversarial-execution-evidence.md"
   spec_anchor_repo: "https://github.com/probityai/agent-evidence-vectors"
@@ -130,6 +130,11 @@ meta:
     ledger emits the anchor as ots_anchor, a partial match filed by its own
     maintainer. Neither term is promoted, because no record yet carries
     anchor_time_rule on the wire. The v0.6.0 tag does not carry either term.
+    Version 0.8.0 adds open verdict classes under the closed result lattice, a
+    criticality for each term, a registryDigest a record carries to name the
+    registry it used, and a resolvable URI for each term. No published
+    identifier moved, and a record that names our own registry, or none, is
+    checked exactly as before.
   opencre_links: >
     A term whose definition states a requirement that one of OpenCRE's Common
     Requirements organizes carries an opencre list. Each item names the CRE by

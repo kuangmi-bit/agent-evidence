@@ -10,7 +10,7 @@ and how much of a population the claim covers.
 It's for anyone who writes a predicate, a verifier or an evidence format for agents and needs each
 term to mean one thing across vendors, including teams who want to map their own fields onto it.
 
-Install the Python package: `pip install agent-evidence-vocabulary==0.7.0`.
+Install the Python package: `pip install agent-evidence-vocabulary==0.8.0`.
 
 Verified by Probity (github.com/probityai/probity). The `probityai` command line is planned, not yet released: `uv add probityai`, then `pip install probityai`.
 
@@ -19,8 +19,8 @@ Verified by Probity (github.com/probityai/probity). The `probityai` command line
 Pin the registry at a release and check its digest:
 
 ```bash
-curl -fsSLO https://raw.githubusercontent.com/probityai/agent-evidence/agent-evidence-vocabulary-v0.7.0/packages/vocabulary/vocabulary.yaml
-echo "b0d69754d54a647d18758ab7e46c2d51430be41c07d3f1906e8c56fe45bd37e9  vocabulary.yaml" | sha256sum -c
+curl -fsSLO https://raw.githubusercontent.com/probityai/agent-evidence/agent-evidence-vocabulary-v0.8.0/packages/vocabulary/vocabulary.yaml
+echo "76233ba8924cebdf053f0449ce023186805156aedca4121b9b156bd747a411b4  vocabulary.yaml" | sha256sum -c
 ```
 
 Then read a term:
@@ -39,7 +39,7 @@ and run `python3 scripts/validate_crosswalks.py` before opening a pull request.
 
 ## Status
 
-Release v0.7.0, tagged October 25, 2026. It adds two proposed terms, `commitment_anchor` and `anchor_time_rule`. The registry file is CC0-1.0, and the rest of the
+Release v0.8.0, tagged October 26, 2026. It adds open verdict classes, a criticality for each term, the `registryDigest` a record carries, and a resolvable URI for each term. The registry file is CC0-1.0, and the rest of the
 repository is Apache-2.0. Every term starts as proposed and is promoted only when an independent
 system emits it; the rules are in
 [GOVERNANCE.md](https://github.com/probityai/agent-evidence/blob/main/packages/vocabulary/GOVERNANCE.md).

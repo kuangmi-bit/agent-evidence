@@ -27,7 +27,7 @@ def check(wheel: Path, sdist: Path, source_root: Path | None = None) -> None:
             and project["license-files"] == ["LICENSE", "LICENSE-CC0"], "released registry grants")
     data = (root / "vocabulary.yaml").read_bytes()
     require(yaml.safe_load(data)["meta"]["version"] == project["version"], "registry and package version")
-    require(hashlib.sha256(data).hexdigest() == "7c0df368fe869d2ac8e17558d833fa9969df6751be9d57492f47c10c54170161",
+    require(hashlib.sha256(data).hexdigest() == "76233ba8924cebdf053f0449ce023186805156aedca4121b9b156bd747a411b4",
             "registry digest")
     source = {"agent_evidence_vocabulary/__init__.py": root / "__init__.py",
               "agent_evidence_vocabulary/vocabulary.yaml": root / "vocabulary.yaml",

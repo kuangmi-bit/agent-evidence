@@ -1,6 +1,6 @@
 {
   "source": "vocabulary.yaml",
-  "source_sha256": "7c0df368fe869d2ac8e17558d833fa9969df6751be9d57492f47c10c54170161",
+  "source_sha256": "76233ba8924cebdf053f0449ce023186805156aedca4121b9b156bd747a411b4",
   "term_uri_base": "https://w3id.org/agent-evidence/vocab/v1/",
   "terms": {
     "acceptance_observed": {
@@ -444,5 +444,5 @@
       "pass"
     ]
   },
-  "version": "0.7.0"
+  "version": "0.8.0"
 }
