@@ -77,9 +77,11 @@ jobs:
         run: cargo metadata --format-version 1 --no-deps > /dev/null
       # A merge to main writes "<pull request title> (#N)" as the merge commit's
       # subject, and the push run's commit-message lint then judges it after
-      # nothing can change it. Lint that subject here, before the merge.
+      # nothing can change it. Lint that subject here, before the merge. Dependabot
+      # writes its own title and has no length setting, so its pull requests are
+      # squash-merged with a subject written by hand and are left out here.
       - name: the pull request title makes a valid merge commit subject
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.event.pull_request.user.login != 'dependabot[bot]'
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
