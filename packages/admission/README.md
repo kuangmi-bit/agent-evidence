@@ -15,7 +15,7 @@ Install the checker in its own environment, then check a synthetic in-toto state
 
 ```sh
 uv venv admission-env
-uv pip install --python admission-env/bin/python agent-evidence-admission==0.2.0
+uv pip install --python admission-env/bin/python agent-evidence-admission==0.1.2
 printf 'abc' > artifact.txt
 cat > statement.json <<'JSON'
 {
@@ -43,7 +43,7 @@ See the [package guide](https://github.com/probityai/agent-evidence/blob/main/pa
 For Kubernetes, pin the policies to a release tag and evaluate the sample statement with OPA:
 
 ```bash
-git clone --depth 1 --branch agent-evidence-admission-v0.2.0 https://github.com/probityai/agent-evidence
+git clone --depth 1 --branch agent-evidence-admission-v0.1.2 https://github.com/probityai/agent-evidence
 cd agent-evidence/packages/admission
 opa eval -f raw -d rego/execution_evidence.rego \
   -I 'count(data.sigstore.errors)' < samples/adversarial-execution-evidence.pass.statement.json
@@ -69,7 +69,7 @@ It prints `true`. `opa test --timeout 120s rego/` runs the oracle's own test sui
 
 ## Status
 
-The Python digest checker is version 0.2.0.
+The Python digest checker is version 0.1.2.
 The policies follow the in-toto Adversarial Execution Evidence predicate v0.7, proposed in
 [in-toto/attestation#570](https://github.com/in-toto/attestation/pull/570). The profile registry
 measures them against the [agent-evidence-vectors](https://github.com/probityai/agent-evidence-vectors) corpus
@@ -86,6 +86,7 @@ setting with no safe default.
 | <a name="verify-the-claim-in-four-commands"></a><a name="what-is-here"></a><a name="why-the-rails-are-published"></a><a name="the-trust-ceiling-stated-before-you-rely-on-any-of-it"></a><a name="the-profile-registry"></a><a name="the-adversarial-ratchet"></a><a name="running-the-conformance-harness"></a><a name="continuous-integration"></a><a name="citation-and-provenance"></a>[Design, trust ceiling and evidence](https://github.com/probityai/agent-evidence/blob/main/packages/admission/docs/DESIGN.md) | the file map, the trust ceiling, how each obligation's disposition is measured, and how to re-run the measurement |
 | [The agent-evidence Action](https://github.com/probityai/agent-evidence/blob/main/docs/ACTION.md) | run these policies and the digest checker in a GitHub workflow, pinned to a release |
 | [Consumer policy](https://github.com/probityai/agent-evidence/blob/main/packages/admission/docs/CONSUMER-POLICY.md) | the pins, what each one decides, and what an absent value means |
+| [Client MCP allowlists](https://github.com/probityai/agent-evidence/blob/main/packages/admission/docs/CLIENT-ALLOWLISTS.md) | render one admit list as the MCP allowlists Claude Code, Cursor and Windsurf enforce, and a static MCP registry for GitHub Copilot |
 | [Agent change admission](https://github.com/probityai/agent-evidence/blob/main/packages/admission/docs/AGENT-CHANGE-ADMISSION.md) | admit an agent harness version only on a signed decision that admitted it, on OPA, Kyverno CEL and policy-controller |
 | [Verifier isolation](https://github.com/probityai/agent-evidence/blob/main/packages/admission/docs/VERIFIER-ISOLATION.md) | refuse a done verdict whose verifier left one of the nine reward-tampering vectors of terminal-bench issue 2086 open, on OPA, Kyverno CEL and CUE (<!-- vi-enforced -->enforced: `cue` 0 of 9, `kyverno-cel` 9 of 9, `rego` 9 of 9<!-- /vi-enforced -->) |
 | [Model report gate](https://github.com/probityai/agent-evidence/blob/main/packages/admission/consumers/policy-vocabulary/README.md) | install a selected reader, repeat the native report and enforce separate publication and quality decisions |

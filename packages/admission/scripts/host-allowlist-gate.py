@@ -81,6 +81,13 @@ ALLOWED_HOSTS = frozenset(
         "datatracker.ietf.org",
         # a registry host in a sample manifest
         "ghcr.io",
+        # the client documentation the generated allowlist formats are written from
+        "code.claude.com",
+        "cursor.com",
+        "docs.windsurf.com",
+        "docs.github.com",
+        # the registry server.json schema namespace the generated registry files carry
+        "static.modelcontextprotocol.io",
     }
 )
 
@@ -105,7 +112,9 @@ RESERVED_NAME_RE = re.compile(
     re.IGNORECASE,
 )
 
-URL_RE = re.compile(r"\b(?:https?|ftp)://([A-Za-z0-9._~%-]+(?::[0-9]+)?)")
+# A backslash before a dot is a regular-expression escape (an allowlist pattern
+# such as https://mcp\\.example\\.com), so it belongs to the host and is removed.
+URL_RE = re.compile(r"\b(?:https?|ftp)://((?:[A-Za-z0-9._~%-]|\\+(?=\.))+(?::[0-9]+)?)")
 # A bare hostname carrying a public suffix, outside a URL. Deliberately narrow:
 # it must have at least two labels and end in letters, so version strings, file
 # names and digests do not register as hosts.
@@ -253,7 +262,7 @@ def main(argv: list[str]) -> int:
         scanned += 1
         for lineno, line in enumerate(text.splitlines(), start=1):
             stripped = NOT_A_HOST.sub(" ", line)
-            hosts = {m.group(1).split(":")[0].lower() for m in URL_RE.finditer(line)}
+            hosts = {m.group(1).replace("\\", "").split(":")[0].lower() for m in URL_RE.finditer(line)}
             hosts |= {m.group(1).lower() for m in BARE_HOST_RE.finditer(stripped)}
             for host in hosts:
                 seen[host] += 1

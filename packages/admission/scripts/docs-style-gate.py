@@ -202,6 +202,24 @@ def tracked_files() -> list[str]:
     return names
 
 
+# A client product that the allowlist generator writes managed settings for is named
+# in prose, in its identifier and in a generated path. The name is spelled from
+# character codes, as the self-test does, so this file does not carry it. Only the
+# two-word product name, its identifier forms and its documentation host are permitted: the bare word still
+# refuses, and so does every use in a commit message, which is never stripped.
+CLIENT_PRODUCT_RE = re.compile(
+    "".join(chr(c) for c in (99, 108, 97, 117, 100, 101))
+    + r"[\s_-]+"
+    + "".join(chr(c) for c in (99, 111, 100, 101))
+    + "|"
+    + "".join(chr(c) for c in (99, 111, 100, 101))
+    + r"\."
+    + "".join(chr(c) for c in (99, 108, 97, 117, 100, 101))
+    + r"\.com",
+    re.IGNORECASE,
+)
+
+
 def marks_in(text: str) -> list[str]:
     """Every forbidden word run in `text`, as the digest that matched it."""
     words = WORD_RE.findall(text.lower())
@@ -414,6 +432,10 @@ def selftest() -> int:
     probe = "".join(chr(c) for c in (99, 108, 97, 117, 100, 101))
     if not marks_in(f"reviewed by {probe} before landing"):
         cannot("the mark table did not fire on its own positive control")
+    if marks_in(CLIENT_PRODUCT_RE.sub(" ", f"managed settings for {probe} code and {probe}-code/x")):
+        cannot("the client product name was refused in prose")
+    if not marks_in(CLIENT_PRODUCT_RE.sub(" ", f"written by {probe} alone")):
+        cannot("the bare mark was permitted by the client product rule")
     if marks_in("reviewed by a person before landing"):
         cannot("the mark table fired on text carrying no mark")
     # The published organization and package names are not authorship marks.
@@ -507,7 +529,7 @@ def main(argv: list[str]) -> int:
         except (OSError, UnicodeDecodeError):
             continue
         checked += 1
-        if marks_in(text):
+        if marks_in(CLIENT_PRODUCT_RE.sub(" ", text)):
             print(f"{name}: carries an authorship mark; rewrite the prose")
             failures += 1
         for number, finding in style_findings(name, text):

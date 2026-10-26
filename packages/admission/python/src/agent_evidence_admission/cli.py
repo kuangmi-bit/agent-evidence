@@ -7,6 +7,11 @@ or the artifact could not be read.
 ``agent-evidence-admission coverage-check <document> --required <list>``: exit 0 when every
 required class is accounted for, 1 when any is missing, doubly selected, or not assessed with no
 reason and no covering reference, 2 when the document or the list could not be read.
+
+``agent-evidence-admission generate <admit-list> --out <dir>``: write the MCP allowlist each
+client enforces natively; exit 0 when every server was rendered for every client asked for, 1 when
+a client could not express a server exactly (the other files are still written), 2 when the admit
+list could not be read or is invalid, or the files could not be written.
 """
 
 from __future__ import annotations
@@ -14,6 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from pathlib import Path
 
 from . import __version__
 from .coverage_check import (
@@ -24,6 +30,8 @@ from .coverage_check import (
 )
 from .digest_check import check as digest_check
 from .digest_check import parse_document, read_source
+from .generate import CLIENTS, generate, parse_admit_list
+from .generate import format_report as format_generate_report
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -46,6 +54,14 @@ def _parser() -> argparse.ArgumentParser:
     listing.add_argument("--require", help="the required classes inline, separated by commas")
     coverage.add_argument("--require-complete", action="store_true", help="fail a class stated incomplete as well")
     coverage.add_argument("--json", action="store_true", help="print the report as JSON")
+    gen = commands.add_parser(
+        "generate",
+        help="render an admit list as the MCP allowlist each client enforces (Claude Code, Cursor, Windsurf, an MCP registry)",
+    )
+    gen.add_argument("admit_list", help="path or https URL of the admit list (JSON)")
+    gen.add_argument("--out", required=True, help="directory to write the generated files into")
+    gen.add_argument("--client", action="append", choices=CLIENTS, help="a client to generate for; repeat it; default every client")
+    gen.add_argument("--json", action="store_true", help="print the report as JSON")
     return parser
 
 
@@ -79,9 +95,32 @@ def _run_coverage(args: argparse.Namespace) -> int:
     return 0 if report.ok else 1
 
 
+def _run_generate(args: argparse.Namespace) -> int:
+    try:
+        servers = parse_admit_list(json.loads(read_source(args.admit_list)))
+    except (OSError, TypeError, ValueError) as error:
+        print(f"ERROR could not read: {error}", file=sys.stderr)
+        return 2
+    result = generate(servers, tuple(dict.fromkeys(args.client or CLIENTS)))
+    out = Path(args.out)
+    try:
+        for relative, text in result.files.items():
+            path = out / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(text, encoding="utf-8")
+    except OSError as error:
+        print(f"ERROR could not write: {error}", file=sys.stderr)
+        return 2
+    print(json.dumps(result.as_dict(), indent=2) if args.json else format_generate_report(result))
+    return 0 if result.ok else 1
+
+
+_COMMANDS = {"digest-check": _run_digest, "coverage-check": _run_coverage, "generate": _run_generate}
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
-    return _run_digest(args) if args.command == "digest-check" else _run_coverage(args)
+    return _COMMANDS[args.command](args)
 
 
 if __name__ == "__main__":

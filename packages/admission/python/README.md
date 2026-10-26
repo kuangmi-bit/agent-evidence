@@ -11,7 +11,7 @@ Install the checker in its own environment:
 
 ```sh
 uv venv admission-env
-uv pip install --python admission-env/bin/python agent-evidence-admission==0.2.0
+uv pip install --python admission-env/bin/python agent-evidence-admission==0.1.2
 ```
 
 ## Example
@@ -42,7 +42,7 @@ A match binds the document to bytes. It does not verify a signature or admit a w
 For an existing CycloneDX SBOM and JAR, provide both files in your working directory:
 
 ```bash
-uvx agent-evidence-admission==0.2.0 digest-check bom.json log4j-core-2.26.1.jar
+uvx agent-evidence-admission==0.1.2 digest-check bom.json log4j-core-2.26.1.jar
 ```
 
 The check runs three steps: read the document (a path or an https URL), recompute the artifact's digest with every algorithm the document names, and compare. It prints one line and exits 0 when a named digest matches:
@@ -57,9 +57,20 @@ It exits 1 with `FAIL digest-mismatch` when the bytes differ, or `FAIL no-digest
 
 `agent-evidence-admission coverage-check bom.json --require library,service,machine-learning-model` reports, for each class a buyer requires, whether a CycloneDX BOM or an SPDX 3 document assessed it, marked it not assessed with a reason (`unknown` or `withheld`), points at a covering document, or says nothing. It exits 1 on a missing or doubly selected class and on a not-assessed entry with no reason and no covering reference. `--required` reads the list from a file, `--json` prints the report. The [vectors](vectors/coverage/manifest.json) are its positive and negative cases.
 
+## Client MCP allowlists
+
+`agent-evidence-admission generate admit-list.json --out generated` turns one list of admitted MCP
+servers into the allowlist that Claude Code, Cursor and Windsurf each enforce, plus a static MCP
+registry for the GitHub Copilot registry-only policy. Each server is written as its exact command
+and arguments or its exact URL. The report names, for each server, what each client matches. No
+client hashes the bytes it starts, so the admitted digest is listed as unbound. A server a client
+cannot express exactly is refused for that client (exit 1), not widened. See
+[the guide](https://github.com/probityai/agent-evidence/blob/main/packages/admission/docs/CLIENT-ALLOWLISTS.md)
+and the [vectors](vectors/generate/manifest.json).
+
 ## Status
 
-Version 0.2.0. The Kubernetes admission policies (Rego, Kyverno, policy-controller) live in the same repository; see the [repository README](https://github.com/probityai/agent-evidence/tree/main/packages/admission#readme).
+Version 0.1.2. The Kubernetes admission policies (Rego, Kyverno, policy-controller) live in the same repository; see the [repository README](https://github.com/probityai/agent-evidence/tree/main/packages/admission#readme).
 
 ## Build packages
 
