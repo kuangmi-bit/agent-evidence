@@ -329,7 +329,7 @@ jobs:
           import jcs_admit, jcs_admit.dsse
           assert "jcs-admit-py-v" + version("jcs-admit") == os.environ["TAG"]
           PY
-      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
         with:
           packages-dir: upload
 
@@ -363,7 +363,7 @@ jobs:
           cd release-artifacts
           test "$(cat SOURCE-COMMIT)" = "$GITHUB_SHA"
           sha256sum --check SHA256SUMS
-      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
         with:
           packages-dir: release-artifacts/dist/
 
@@ -388,7 +388,7 @@ jobs:
           cd release-artifacts
           test "$(cat SOURCE-COMMIT)" = "$GITHUB_SHA"
           sha256sum --check SHA256SUMS
-      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
         with:
           packages-dir: release-artifacts/dist/
 
@@ -413,6 +413,6 @@ jobs:
           cd release-artifacts
           test "$(cat SOURCE-COMMIT)" = "$GITHUB_SHA"
           sha256sum --check SHA256SUMS
-      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
         with:
           packages-dir: release-artifacts/dist/
