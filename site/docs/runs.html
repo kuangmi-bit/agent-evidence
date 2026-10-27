@@ -3815,13 +3815,151 @@ No retained record matches these filters. Clear filters or use another search te
 <p>answerExposure: The corrected public fixture, all upstream expected outcomes and README annotations were available before the reader and run.</p>
 <p>comparisonOrder: The independently written reader emitted raw checks, its outcomes and comparisons in one report; not answer-blind or separately graded.</p>
 </section>
+<section id="record-aps-corrected20-r2-2026-10-27" class="run-record" data-results="not-exercised out-of-scope pass">
+<h2>aps-corrected20-r2-2026-10-27</h2>
+<p>Claim scope: independently-written-and-operated-reader-on-producer-authored-finite-synthetic-corpus</p>
+<p>Review state: author-retained-measured-record</p>
+<p>Open <a href="experiments/aps-corrected20-r2-2026-10-27/report.json">Report</a>, <a href="experiments/aps-corrected20-r2-2026-10-27/provenance.json">Provenance</a> and <a href="https://github.com/agent-passport-system/agent-passport-system/blob/e061462cea95b029203374496bbd14488d8d2993/fixtures/agent-passport-v2/README.md">Contract</a>.</p>
+<h3 id="per-claim-results-27">Per-claim results</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Claim / Recorded result">
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Recorded result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>revision-2-corpus-source-SHA256</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>superseded-revision-1-source-SHA256</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>finite-diagnostic-comparison</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>upstream-source-outcome-population</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>separate-reader-outcome-population</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>five-separate-upstream-draft-annotations</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>reader-does-not-import-APS-SDK</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>selected-SDK-corpus-characterization</td>
+<td>not-exercised</td>
+</tr>
+<tr>
+<td>authenticated-historical-key-authority</td>
+<td>not-exercised</td>
+</tr>
+<tr>
+<td>principal-binding</td>
+<td>not-exercised</td>
+</tr>
+<tr>
+<td>general-JCS-conformance</td>
+<td>out-of-scope</td>
+</tr>
+<tr>
+<td>independent-cryptographic-backend</td>
+<td>out-of-scope</td>
+</tr>
+<tr>
+<td>outside-recurring-host-adoption</td>
+<td>not-exercised</td>
+</tr>
+<tr>
+<td>independent-effect-custody</td>
+<td>not-exercised</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="roles-27">Roles</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Role / Declaration">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Role</th>
+<th>Declaration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>producer</td>
+<td>APS/AEOESS</td>
+</tr>
+<tr>
+<td>readerAuthor</td>
+<td>Probity</td>
+</tr>
+<tr>
+<td>runner</td>
+<td>Probity, operator workstation; not the one-CPU lab job of revision 1</td>
+</tr>
+<tr>
+<td>atlasOperator</td>
+<td>Probity</td>
+</tr>
+<tr>
+<td>retentionHolder</td>
+<td>Probity</td>
+</tr>
+<tr>
+<td>independentOperation</td>
+<td>Probity operated the reader separately from APS/AEOESS fixture authors; not independent of Probity</td>
+</tr>
+<tr>
+<td>independentEffectCustody</td>
+<td>not-established</td>
+</tr>
+<tr>
+<td>outsideRecurringUse</td>
+<td>not-established</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="limits-27">Limits</h3>
+<ul>
+<li>Finite printable-ASCII corpus reader; not general JCS conformance.</li>
+<li>Signature verification uses cryptography/OpenSSL; no independent cryptographic-backend claim.</li>
+<li>Resolver answers are supplied synthetic data, without historical validity windows or authenticated lookup.</li>
+<li>No APS package qualification, principal binding, live DID lookup, host adoption, federation enrollment or commercial agreement.</li>
+<li>Twenty public synthetic cases, not a representative deployment population.</li>
+<li>Run on an operator workstation with a hash-enforced install; wall-clock authentication of the run time is not established.</li>
+<li>Agreement with the revision 2 file follows the producer moving three outcomes to the revision 1 report values; it is not a new blind test.</li>
+<li>No SDK invocation, dependency audit or one-CPU lab job was rerun for revision 2; the adverse revision 1 SDK and audit records stand as published.</li>
+<li>No new package release, maintainer acceptance of this reader, host adoption, federation enrollment or commercial agreement.</li>
+</ul>
+<p>answerExposure: The revision 2 public fixture, all upstream expected outcomes and README annotations were available before the reader and run; the reader had already been written and run over revision 1.</p>
+<p>comparisonOrder: The revision 1 reader, with a small retained diff, emitted raw checks, its outcomes and comparisons in one report. The producer moved three expected outcomes to the values the revision 1 report returned, so agreement confirms the revision; it is not a new blind test.</p>
+</section>
 <section id="record-trace-m1-consumer-2026-10-11" class="run-record" data-results="not-exercised out-of-scope pass">
 <h2>trace-m1-consumer-2026-10-11</h2>
 <p>Claim scope: signature-report-binding-and-native-claim-ceiling-on-public-synthetic-inputs</p>
 <p>Review state: retained-independent-consumer-result</p>
 <p>Open <a href="interop/trace-m1/retained/public-report.json">Report</a>, <a href="interop/trace-m1/retained/QUALIFICATION.json">Provenance</a> and <a href="https://github.com/darklordVirtual/REMORA-research/pull/822">Contract</a>.</p>
 <p><a href="trace-m1-consumer.html">Recorded procedure</a></p>
-<h3 id="per-claim-results-27">Per-claim results</h3>
+<h3 id="per-claim-results-28">Per-claim results</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Claim / Recorded result">
 <table>
 <thead>
@@ -3866,7 +4004,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="roles-27">Roles</h3>
+<h3 id="roles-28">Roles</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Role / Declaration">
 <table>
 <colgroup>
@@ -3903,7 +4041,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="limits-27">Limits</h3>
+<h3 id="limits-28">Limits</h3>
 <ul>
 <li>Bounded ASCII JSON, explicit report digest, P1Y retention and frozen synthetic inputs</li>
 <li>Native reason codes are preserved; independent refusal codes are not equated</li>
@@ -3920,7 +4058,7 @@ No retained record matches these filters. Clear filters or use another search te
 <p>Review state: retained-source-bound-observation</p>
 <p>Open <a href="experiments/packslip-dsse-host-ci-2026-10-11/report.json">Report</a>, <a href="experiments/packslip-dsse-host-ci-2026-10-11/provenance.json">Provenance</a> and <a href="lab.html#choose-the-claim-you-are-submitting">Contract</a>.</p>
 <p><a href="experiments/packslip-dsse-host-ci-2026-10-11/README.md">Recorded procedure</a></p>
-<h3 id="per-claim-results-28">Per-claim results</h3>
+<h3 id="per-claim-results-29">Per-claim results</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Claim / Recorded result">
 <table>
 <thead>
@@ -3957,7 +4095,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="roles-28">Roles</h3>
+<h3 id="roles-29">Roles</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Role / Declaration">
 <table>
 <colgroup>
@@ -3998,7 +4136,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="limits-28">Limits</h3>
+<h3 id="limits-29">Limits</h3>
 <ul>
 <li>Historical exact-head job and source; no current or recurring success claim</li>
 <li>Author-contributed regression maintained by the host; not independently authored</li>
@@ -4014,7 +4152,7 @@ No retained record matches these filters. Clear filters or use another search te
 <p>Review state: retained-source-bound-observation</p>
 <p>Open <a href="experiments/horizon-signed-target-reader-2026-10-09/report.json">Report</a>, <a href="experiments/horizon-signed-target-reader-2026-10-09/provenance.json">Provenance</a> and <a href="lab.html#choose-the-claim-you-are-submitting">Contract</a>.</p>
 <p><a href="experiments/horizon-signed-target-reader-2026-10-09/README.md">Recorded procedure</a></p>
-<h3 id="per-claim-results-29">Per-claim results</h3>
+<h3 id="per-claim-results-30">Per-claim results</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Claim / Recorded result">
 <table>
 <thead>
@@ -4051,7 +4189,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="roles-29">Roles</h3>
+<h3 id="roles-30">Roles</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Role / Declaration">
 <table>
 <colgroup>
@@ -4092,7 +4230,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="limits-29">Limits</h3>
+<h3 id="limits-30">Limits</h3>
 <ul>
 <li>Host CI actor is separately established by GitHub metadata; the output operator string is caller-declared and unauthenticated</li>
 <li>The original signed-record assertions remain producer-declared: pair A has seven true assertions and one unevaluated assertion.</li>
@@ -4108,7 +4246,7 @@ No retained record matches these filters. Clear filters or use another search te
 <p>Review state: retained-source-bound-observation</p>
 <p>Open <a href="experiments/ten-sdk-json-bytes-2026-10-09/report.json">Report</a>, <a href="experiments/ten-sdk-json-bytes-2026-10-09/provenance.json">Provenance</a> and <a href="lab.html#choose-the-claim-you-are-submitting">Contract</a>.</p>
 <p><a href="experiments/ten-sdk-json-bytes-2026-10-09/README.md">Recorded procedure</a></p>
-<h3 id="per-claim-results-30">Per-claim results</h3>
+<h3 id="per-claim-results-31">Per-claim results</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Claim / Recorded result">
 <table>
 <thead>
@@ -4145,7 +4283,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="roles-30">Roles</h3>
+<h3 id="roles-31">Roles</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Role / Declaration">
 <table>
 <colgroup>
@@ -4174,7 +4312,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="limits-30">Limits</h3>
+<h3 id="limits-31">Limits</h3>
 <ul>
 <li>The 27 recorded rows include the row for the bounded profile. Earlier summaries with 26 rows do not cover the full artifact population.</li>
 <li>The raw canonical, differs and refused values are byte-comparison outcomes. They do not grade whether an SDK met its contract.</li>
@@ -4191,7 +4329,7 @@ No retained record matches these filters. Clear filters or use another search te
 <p>Review state: retained-source-bound-observation</p>
 <p>Open <a href="experiments/nist-ai300-1-checker-2026-10-13/report.json">Report</a>, <a href="experiments/nist-ai300-1-checker-2026-10-13/provenance.json">Provenance</a> and <a href="lab.html#choose-the-claim-you-are-submitting">Contract</a>.</p>
 <p><a href="experiments/nist-ai300-1-checker-2026-10-13/README.md">Recorded procedure</a></p>
-<h3 id="per-claim-results-31">Per-claim results</h3>
+<h3 id="per-claim-results-32">Per-claim results</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Claim / Recorded result">
 <table>
 <thead>
@@ -4228,7 +4366,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="roles-31">Roles</h3>
+<h3 id="roles-32">Roles</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Role / Declaration">
 <table>
 <colgroup>
@@ -4257,7 +4395,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="limits-31">Limits</h3>
+<h3 id="limits-32">Limits</h3>
 <ul>
 <li>The original Python 3.13.15 host output is retained. This packet does not repeat the checker workload.</li>
 <li>Structural extraction and mutation sensitivity do not establish semantic completeness, NIST certification or compliance</li>
@@ -4273,7 +4411,7 @@ No retained record matches these filters. Clear filters or use another search te
 <p>Review state: retained-source-bound-observation</p>
 <p>Open <a href="experiments/signed-history-boundaries-2026-10-13/report.json">Report</a>, <a href="experiments/signed-history-boundaries-2026-10-13/provenance.json">Provenance</a> and <a href="lab.html#choose-the-claim-you-are-submitting">Contract</a>.</p>
 <p><a href="experiments/signed-history-boundaries-2026-10-13/README.md">Recorded procedure</a></p>
-<h3 id="per-claim-results-32">Per-claim results</h3>
+<h3 id="per-claim-results-33">Per-claim results</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Claim / Recorded result">
 <table>
 <thead>
@@ -4310,7 +4448,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="roles-32">Roles</h3>
+<h3 id="roles-33">Roles</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Role / Declaration">
 <table>
 <colgroup>
@@ -4339,7 +4477,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="limits-32">Limits</h3>
+<h3 id="limits-33">Limits</h3>
 <ul>
 <li>Public deterministic test keys and author-generated synthetic histories; independently controlled anchors and custody remain unestablished</li>
 <li>The original output for the case-specific job and the exact executed tests bind the control claims. The default artifact of 285 cases does not.</li>
@@ -4355,7 +4493,7 @@ No retained record matches these filters. Clear filters or use another search te
 <p>Review state: retained-source-bound-observation</p>
 <p>Open <a href="experiments/ratchet-benign-heredoc-2026-10-15/report.json">Report</a>, <a href="experiments/ratchet-benign-heredoc-2026-10-15/provenance.json">Provenance</a> and <a href="lab.html#choose-the-claim-you-are-submitting">Contract</a>.</p>
 <p><a href="experiments/ratchet-benign-heredoc-2026-10-15/README.md">Recorded procedure</a></p>
-<h3 id="per-claim-results-33">Per-claim results</h3>
+<h3 id="per-claim-results-34">Per-claim results</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Claim / Recorded result">
 <table>
 <thead>
@@ -4392,7 +4530,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="roles-33">Roles</h3>
+<h3 id="roles-34">Roles</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Role / Declaration">
 <table>
 <colgroup>
@@ -4421,7 +4559,7 @@ No retained record matches these filters. Clear filters or use another search te
 </tbody>
 </table>
 </div>
-<h3 id="limits-33">Limits</h3>
+<h3 id="limits-34">Limits</h3>
 <ul>
 <li>The 13,739 sessions and 632,126 tool calls are the author's pinned report. They are not an independent measured Atlas run.</li>
 <li>The first reported run had one false alarm: a Python heredoc wrote documentation naming a force push; no push occurred</li>

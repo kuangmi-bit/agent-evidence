@@ -1804,6 +1804,74 @@ comparisonOrder: The independently written reader emitted raw checks, its outcom
 
 <div>
 
+<a id="record-aps-corrected20-r2-2026-10-27"></a>
+
+## aps-corrected20-r2-2026-10-27
+
+Claim scope: independently-written-and-operated-reader-on-producer-authored-finite-synthetic-corpus
+
+Review state: author-retained-measured-record
+
+Open [Report](experiments/aps-corrected20-r2-2026-10-27/report.json), [Provenance](experiments/aps-corrected20-r2-2026-10-27/provenance.json) and [Contract](https://github.com/agent-passport-system/agent-passport-system/blob/e061462cea95b029203374496bbd14488d8d2993/fixtures/agent-passport-v2/README.md).
+
+<a id="per-claim-results-27"></a>
+
+### Per-claim results
+
+| Claim                                    | Recorded result |
+|------------------------------------------|-----------------|
+| revision-2-corpus-source-SHA256          | pass            |
+| superseded-revision-1-source-SHA256      | pass            |
+| finite-diagnostic-comparison             | pass            |
+| upstream-source-outcome-population       | pass            |
+| separate-reader-outcome-population       | pass            |
+| five-separate-upstream-draft-annotations | pass            |
+| reader-does-not-import-APS-SDK           | pass            |
+| selected-SDK-corpus-characterization     | not-exercised   |
+| authenticated-historical-key-authority   | not-exercised   |
+| principal-binding                        | not-exercised   |
+| general-JCS-conformance                  | out-of-scope    |
+| independent-cryptographic-backend        | out-of-scope    |
+| outside-recurring-host-adoption          | not-exercised   |
+| independent-effect-custody               | not-exercised   |
+
+<a id="roles-27"></a>
+
+### Roles
+
+| Role | Declaration |
+|----|----|
+| producer | APS/AEOESS |
+| readerAuthor | Probity |
+| runner | Probity, operator workstation; not the one-CPU lab job of revision 1 |
+| atlasOperator | Probity |
+| retentionHolder | Probity |
+| independentOperation | Probity operated the reader separately from APS/AEOESS fixture authors; not independent of Probity |
+| independentEffectCustody | not-established |
+| outsideRecurringUse | not-established |
+
+<a id="limits-27"></a>
+
+### Limits
+
+- Finite printable-ASCII corpus reader; not general JCS conformance.
+- Signature verification uses cryptography/OpenSSL; no independent cryptographic-backend claim.
+- Resolver answers are supplied synthetic data, without historical validity windows or authenticated lookup.
+- No APS package qualification, principal binding, live DID lookup, host adoption, federation enrollment or commercial agreement.
+- Twenty public synthetic cases, not a representative deployment population.
+- Run on an operator workstation with a hash-enforced install; wall-clock authentication of the run time is not established.
+- Agreement with the revision 2 file follows the producer moving three outcomes to the revision 1 report values; it is not a new blind test.
+- No SDK invocation, dependency audit or one-CPU lab job was rerun for revision 2; the adverse revision 1 SDK and audit records stand as published.
+- No new package release, maintainer acceptance of this reader, host adoption, federation enrollment or commercial agreement.
+
+answerExposure: The revision 2 public fixture, all upstream expected outcomes and README annotations were available before the reader and run; the reader had already been written and run over revision 1.
+
+comparisonOrder: The revision 1 reader, with a small retained diff, emitted raw checks, its outcomes and comparisons in one report. The producer moved three expected outcomes to the values the revision 1 report returned, so agreement confirms the revision; it is not a new blind test.
+
+</div>
+
+<div>
+
 <a id="record-trace-m1-consumer-2026-10-11"></a>
 
 ## trace-m1-consumer-2026-10-11
@@ -1816,7 +1884,7 @@ Open [Report](interop/trace-m1/retained/public-report.json), [Provenance](intero
 
 [Recorded procedure](trace-m1-consumer.md)
 
-<a id="per-claim-results-27"></a>
+<a id="per-claim-results-28"></a>
 
 ### Per-claim results
 
@@ -1831,7 +1899,7 @@ Open [Report](interop/trace-m1/retained/public-report.json), [Provenance](intero
 | outside-host-adoption                | not-exercised   |
 | trace-conformance                    | out-of-scope    |
 
-<a id="roles-27"></a>
+<a id="roles-28"></a>
 
 ### Roles
 
@@ -1843,7 +1911,7 @@ Open [Report](interop/trace-m1/retained/public-report.json), [Provenance](intero
 | producerIndependence | external implementation and operator; no REMORA runtime or reference-verifier imports |
 | independentWitness | not-established |
 
-<a id="limits-27"></a>
+<a id="limits-28"></a>
 
 ### Limits
 
@@ -1873,7 +1941,7 @@ Open [Report](experiments/packslip-dsse-host-ci-2026-10-11/report.json), [Proven
 
 [Recorded procedure](experiments/packslip-dsse-host-ci-2026-10-11/README.md)
 
-<a id="per-claim-results-28"></a>
+<a id="per-claim-results-29"></a>
 
 ### Per-claim results
 
@@ -1886,7 +1954,7 @@ Open [Report](experiments/packslip-dsse-host-ci-2026-10-11/report.json), [Proven
 | independently-observed-effect           | not-exercised   |
 | paid-use                                | not-exercised   |
 
-<a id="roles-28"></a>
+<a id="roles-29"></a>
 
 ### Roles
 
@@ -1899,7 +1967,7 @@ Open [Report](experiments/packslip-dsse-host-ci-2026-10-11/report.json), [Proven
 | independentOperation | not-established |
 | sourceOfObservation | GitHub host job metadata and crates.io publisher metadata |
 
-<a id="limits-28"></a>
+<a id="limits-29"></a>
 
 ### Limits
 
@@ -1928,7 +1996,7 @@ Open [Report](experiments/horizon-signed-target-reader-2026-10-09/report.json), 
 
 [Recorded procedure](experiments/horizon-signed-target-reader-2026-10-09/README.md)
 
-<a id="per-claim-results-29"></a>
+<a id="per-claim-results-30"></a>
 
 ### Per-claim results
 
@@ -1941,7 +2009,7 @@ Open [Report](experiments/horizon-signed-target-reader-2026-10-09/report.json), 
 | fresh-network-effect-reproduction         | not-exercised   |
 | independent-witness-custody               | not-exercised   |
 
-<a id="roles-29"></a>
+<a id="roles-30"></a>
 
 ### Roles
 
@@ -1954,7 +2022,7 @@ Open [Report](experiments/horizon-signed-target-reader-2026-10-09/report.json), 
 | readerMaintainer | Probity |
 | reportOperator | Caller-declared unauthenticated Probity Codex / ordinary shared BoxPool author-run; not GitHub actor identity |
 
-<a id="limits-29"></a>
+<a id="limits-30"></a>
 
 ### Limits
 
@@ -1983,7 +2051,7 @@ Open [Report](experiments/ten-sdk-json-bytes-2026-10-09/report.json), [Provenanc
 
 [Recorded procedure](experiments/ten-sdk-json-bytes-2026-10-09/README.md)
 
-<a id="per-claim-results-30"></a>
+<a id="per-claim-results-31"></a>
 
 ### Per-claim results
 
@@ -1996,7 +2064,7 @@ Open [Report](experiments/ten-sdk-json-bytes-2026-10-09/report.json), [Provenanc
 | independent-operation                              | not-exercised   |
 | production-or-commercial-effect                    | not-exercised   |
 
-<a id="roles-30"></a>
+<a id="roles-31"></a>
 
 ### Roles
 
@@ -2006,7 +2074,7 @@ Open [Report](experiments/ten-sdk-json-bytes-2026-10-09/report.json), [Provenanc
 | atlasReplay | Probity retained-output reader; no original workload repeated |
 | independentOperation | not-established |
 
-<a id="limits-30"></a>
+<a id="limits-31"></a>
 
 ### Limits
 
@@ -2036,7 +2104,7 @@ Open [Report](experiments/nist-ai300-1-checker-2026-10-13/report.json), [Provena
 
 [Recorded procedure](experiments/nist-ai300-1-checker-2026-10-13/README.md)
 
-<a id="per-claim-results-31"></a>
+<a id="per-claim-results-32"></a>
 
 ### Per-claim results
 
@@ -2049,7 +2117,7 @@ Open [Report](experiments/nist-ai300-1-checker-2026-10-13/report.json), [Provena
 | semantic-sufficiency-of-all-requirements      | not-exercised   |
 | production-compliance                         | not-exercised   |
 
-<a id="roles-31"></a>
+<a id="roles-32"></a>
 
 ### Roles
 
@@ -2059,7 +2127,7 @@ Open [Report](experiments/nist-ai300-1-checker-2026-10-13/report.json), [Provena
 | atlasReplay | Probity retained-output reader; no original workload repeated |
 | independentOperation | not-established |
 
-<a id="limits-31"></a>
+<a id="limits-32"></a>
 
 ### Limits
 
@@ -2088,7 +2156,7 @@ Open [Report](experiments/signed-history-boundaries-2026-10-13/report.json), [Pr
 
 [Recorded procedure](experiments/signed-history-boundaries-2026-10-13/README.md)
 
-<a id="per-claim-results-32"></a>
+<a id="per-claim-results-33"></a>
 
 ### Per-claim results
 
@@ -2101,7 +2169,7 @@ Open [Report](experiments/signed-history-boundaries-2026-10-13/report.json), [Pr
 | independent-key-custody | not-exercised |
 | production-history-completeness | not-exercised |
 
-<a id="roles-32"></a>
+<a id="roles-33"></a>
 
 ### Roles
 
@@ -2111,7 +2179,7 @@ Open [Report](experiments/signed-history-boundaries-2026-10-13/report.json), [Pr
 | atlasReplay | Probity retained-output reader; no original workload repeated |
 | independentOperation | not-established |
 
-<a id="limits-32"></a>
+<a id="limits-33"></a>
 
 ### Limits
 
@@ -2140,7 +2208,7 @@ Open [Report](experiments/ratchet-benign-heredoc-2026-10-15/report.json), [Prove
 
 [Recorded procedure](experiments/ratchet-benign-heredoc-2026-10-15/README.md)
 
-<a id="per-claim-results-33"></a>
+<a id="per-claim-results-34"></a>
 
 ### Per-claim results
 
@@ -2153,7 +2221,7 @@ Open [Report](experiments/ratchet-benign-heredoc-2026-10-15/report.json), [Prove
 | zero-false-alarms-outside-selected-history | not-exercised |
 | prevented-production-incident | not-exercised |
 
-<a id="roles-33"></a>
+<a id="roles-34"></a>
 
 ### Roles
 
@@ -2163,7 +2231,7 @@ Open [Report](experiments/ratchet-benign-heredoc-2026-10-15/report.json), [Prove
 | atlasReplay | Probity retained-output reader; no original workload repeated |
 | independentOperation | not-established |
 
-<a id="limits-33"></a>
+<a id="limits-34"></a>
 
 ### Limits
 

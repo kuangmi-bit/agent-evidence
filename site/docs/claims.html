@@ -2689,6 +2689,14 @@
 <td>Download altrudev/frequency-open-evidence-lab at d0c707c and run <code>python3 -I check.py</code> and <code>python3 -I -m unittest discover -v</code></td>
 <td>A rerun of the fixture’s own code on supplied state strings; no write is observed and no second reader ran. The relationship column is the fixture author’s comparison, accepted as a shared control, not a provenance claim.</td>
 </tr>
+<tr data-read="2026-10-27">
+<td>P-118</td>
+<td>The register update of 27 October retains Probity’s reader run over revision 2 of the corrected 20 Agent Passport cases, <code>fixtures/agent-passport-v2/agent-passport-vectors-v2-r2.json</code> at <code>e061462cea95b029203374496bbd14488d8d2993</code> (SHA-256 <code>9bd1f1849910c85f0555baf8efaa529aa9d057dce13c24606285b8643a003b89</code>), which supersedes the <code>407ca2d5</code> file. Source and reader outcomes are both 4 valid, 11 invalid, 3 indeterminate and 2 unsupported; all 20 outcomes, layer maps and resolver requests agree and <code>mismatches</code> is empty. The raw byte checks are identical to the revision 1 report on all 20 cases, and the producer moved three expected outcomes to the revision 1 report values. The reader does not import the APS SDK.</td>
+<td><code>experiments/aps-corrected20-r2-2026-10-27/report.json</code> (SHA-256 <code>70f806adadeb42e659e5c2480f6beeb14e22bda9c4df125733a693ff178a4b88</code>), <code>provenance.json</code>, <code>read_corpus.py</code>, <code>reader-diff-from-r1.diff</code>, <code>reader-requirements.txt</code> and <code>producer/agent-passport-vectors-v2-r2.json</code>; report timestamp 2026-10-27T04:01:06.339464+00:00</td>
+<td>2026-10-27 <span class="cadence">(does not expire)</span></td>
+<td>Check all register artifact hashes and report pointers with <code>python3 tools/check_lab.py</code>; compare <code>producer/agent-passport-vectors-v2-r2.json</code> with the upstream path and commit named in <code>provenance.json</code>; replay with <code>python -I -B read_corpus.py --fixture producer/agent-passport-vectors-v2-r2.json --output report.json</code> under the hash-pinned requirements and confirm the output differs only in the <code>at</code> timestamp</td>
+<td>Finite public synthetic corpus consumption. Agreement follows the producer moving three outcomes to the revision 1 report values, so it confirms the revision and is not a new blind test. The reader and its grading are Probity’s. Supplied resolver answers do not establish authenticated history, principal binding, independent cryptographic backend, federation enrollment, release, host adoption or commercial agreement. No SDK run or dependency audit was repeated for revision 2.</td>
+</tr>
 </tbody>
 </table>
 </div>

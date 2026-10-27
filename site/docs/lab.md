@@ -101,6 +101,12 @@ Five upstream draft annotations remain separate from those outcome counts: `did-
 
 The original overall run remains adverse. Both selected SDK invocations stopped at IPC creation before corpus evaluation, and their original locked dependency audit retains three high entries and two advisories. The useful reader result stays separate from those failures, whole-SDK qualification, federation enrollment and host adoption. All earlier register objects and evidence bytes are unchanged.
 
+<a id="revision-2-of-the-corrected-corpus"></a>
+
+### Revision 2 of the corrected corpus
+
+APS/AEOESS then published revision 2 of the file, at `e061462cea95b029203374496bbd14488d8d2993`, SHA-256 `9bd1f1849910c85f0555baf8efaa529aa9d057dce13c24606285b8643a003b89`. Probity ran the same reader over it with a small [retained diff](experiments/aps-corrected20-r2-2026-10-27/reader-diff-from-r1.diff). The [report](experiments/aps-corrected20-r2-2026-10-27/report.json) shows source and reader both at four valid, eleven invalid, three indeterminate and two unsupported outcomes, with all 20 outcomes, layer maps and resolver requests in agreement and no declared difference. Its raw byte checks match the revision 1 report on all 20 cases. The producer moved three expected outcomes to the values the revision 1 report returned, so this confirms the revision and is not a new blind test. The [source and run record](experiments/aps-corrected20-r2-2026-10-27/README.md) holds the hash-pinned requirements and the replay command. The revision 1 record above stays as published, and no SDK invocation or dependency audit was repeated.
+
 <a id="outside-receipt-verifier-and-primitive-identifier-checks"></a>
 
 ## Outside receipt verifier and primitive identifier checks

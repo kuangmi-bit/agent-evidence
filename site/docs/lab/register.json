@@ -8286,6 +8286,170 @@
       ]
     },
     {
+      "id": "aps-corrected20-r2-2026-10-27",
+      "atlasRevision": "055c23052f51b0d9022d58311e563031f673b134",
+      "sourceRevision": "e061462cea95b029203374496bbd14488d8d2993",
+      "readerRevision": "sha256:14139579e6eed381b69631c232e5a4bc5c8d84427908da364354ed5099563346",
+      "contract": "https://github.com/agent-passport-system/agent-passport-system/blob/e061462cea95b029203374496bbd14488d8d2993/fixtures/agent-passport-v2/README.md",
+      "report": "../experiments/aps-corrected20-r2-2026-10-27/report.json",
+      "provenance": "../experiments/aps-corrected20-r2-2026-10-27/provenance.json",
+      "reviewState": "author-retained-measured-record",
+      "evidenceClaim": "independently-written-and-operated-reader-on-producer-authored-finite-synthetic-corpus",
+      "roles": {
+        "producer": "APS/AEOESS",
+        "readerAuthor": "Probity",
+        "runner": "Probity, operator workstation; not the one-CPU lab job of revision 1",
+        "atlasOperator": "Probity",
+        "retentionHolder": "Probity",
+        "independentOperation": "Probity operated the reader separately from APS/AEOESS fixture authors; not independent of Probity",
+        "independentEffectCustody": "not-established",
+        "outsideRecurringUse": "not-established"
+      },
+      "answerExposure": "The revision 2 public fixture, all upstream expected outcomes and README annotations were available before the reader and run; the reader had already been written and run over revision 1.",
+      "comparisonOrder": "The revision 1 reader, with a small retained diff, emitted raw checks, its outcomes and comparisons in one report. The producer moved three expected outcomes to the values the revision 1 report returned, so agreement confirms the revision; it is not a new blind test.",
+      "limits": [
+        "Finite printable-ASCII corpus reader; not general JCS conformance.",
+        "Signature verification uses cryptography/OpenSSL; no independent cryptographic-backend claim.",
+        "Resolver answers are supplied synthetic data, without historical validity windows or authenticated lookup.",
+        "No APS package qualification, principal binding, live DID lookup, host adoption, federation enrollment or commercial agreement.",
+        "Twenty public synthetic cases, not a representative deployment population.",
+        "Run on an operator workstation with a hash-enforced install; wall-clock authentication of the run time is not established.",
+        "Agreement with the revision 2 file follows the producer moving three outcomes to the revision 1 report values; it is not a new blind test.",
+        "No SDK invocation, dependency audit or one-CPU lab job was rerun for revision 2; the adverse revision 1 SDK and audit records stand as published.",
+        "No new package release, maintainer acceptance of this reader, host adoption, federation enrollment or commercial agreement."
+      ],
+      "claimResults": [
+        {
+          "claim": "revision-2-corpus-source-SHA256",
+          "result": "pass",
+          "recordedField": "/fixtureSHA256",
+          "expectedValue": "9bd1f1849910c85f0555baf8efaa529aa9d057dce13c24606285b8643a003b89"
+        },
+        {
+          "claim": "superseded-revision-1-source-SHA256",
+          "result": "pass",
+          "recordedField": "/supersedesFixtureSHA256",
+          "expectedValue": "9fce76dbf13de9749a2ef52c8dedecce08e4874da0203b39a7d941eb479b5ac5"
+        },
+        {
+          "claim": "finite-diagnostic-comparison",
+          "result": "pass",
+          "recordedField": "/mismatches",
+          "expectedValue": []
+        },
+        {
+          "claim": "upstream-source-outcome-population",
+          "result": "pass",
+          "recordedField": "/sourceObservations",
+          "expectedValue": {
+            "valid": 4,
+            "invalid": 11,
+            "indeterminate": 3,
+            "unsupported": 2
+          }
+        },
+        {
+          "claim": "separate-reader-outcome-population",
+          "result": "pass",
+          "recordedField": "/readerOutcomes",
+          "expectedValue": {
+            "valid": 4,
+            "invalid": 11,
+            "indeterminate": 3,
+            "unsupported": 2
+          }
+        },
+        {
+          "claim": "five-separate-upstream-draft-annotations",
+          "result": "pass",
+          "recordedField": "/separateSDKAnnotations",
+          "expectedValue": [
+            "did-web-resolver-not-found",
+            "expired",
+            "not-yet-valid",
+            "record-type-changed",
+            "version-changed"
+          ]
+        },
+        {
+          "claim": "reader-does-not-import-APS-SDK",
+          "result": "pass",
+          "recordedField": "/readerImportsAPSSDK",
+          "expectedValue": false
+        },
+        {
+          "claim": "selected-SDK-corpus-characterization",
+          "result": "not-exercised"
+        },
+        {
+          "claim": "authenticated-historical-key-authority",
+          "result": "not-exercised"
+        },
+        {
+          "claim": "principal-binding",
+          "result": "not-exercised"
+        },
+        {
+          "claim": "general-JCS-conformance",
+          "result": "out-of-scope"
+        },
+        {
+          "claim": "independent-cryptographic-backend",
+          "result": "out-of-scope"
+        },
+        {
+          "claim": "outside-recurring-host-adoption",
+          "result": "not-exercised"
+        },
+        {
+          "claim": "independent-effect-custody",
+          "result": "not-exercised"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/README.md",
+          "sha256": "68a15b417464c96f4e22a63a543da04d0685808a63ad7f4219050755236992e3"
+        },
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/producer/LICENSE",
+          "sha256": "c6276a9c8c67588338d8439b0c7d27b3451335fc652e02a2be990e81c51ef40a"
+        },
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/producer/agent-passport-vectors-v2-r2.json",
+          "sha256": "9bd1f1849910c85f0555baf8efaa529aa9d057dce13c24606285b8643a003b89"
+        },
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/provenance.json",
+          "sha256": "6a0ce2e27c6a0d384b3ee03373e625ec85c89c21c87fec409a04f05ea6deab95"
+        },
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/read_corpus.py",
+          "sha256": "14139579e6eed381b69631c232e5a4bc5c8d84427908da364354ed5099563346"
+        },
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/reader-diff-from-r1.diff",
+          "sha256": "6627964f462c3400610c4cd50fa555a629fc3cf8499e024ce8a7fc6a43876e11"
+        },
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/reader-requirements.txt",
+          "sha256": "2e1656c458cd8838941bd224f9ae1c2f29beb7f320740d260629e66bcae2eeab"
+        },
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/reader.stderr",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/reader.stdout",
+          "sha256": "b8829566bad7cb629fa2c4fcfa7744db6d5f7c6213398ebafe6e3d8e68c00d09"
+        },
+        {
+          "path": "../experiments/aps-corrected20-r2-2026-10-27/report.json",
+          "sha256": "70f806adadeb42e659e5c2480f6beeb14e22bda9c4df125733a693ff178a4b88"
+        }
+      ]
+    },
+    {
       "id": "trace-m1-consumer-2026-10-11",
       "experiment": "../trace-m1-consumer.html",
       "contract": "https://github.com/darklordVirtual/REMORA-research/pull/822",

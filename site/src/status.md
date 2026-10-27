@@ -1,7 +1,7 @@
 ---
 title: "Claim status"
 subtitle: "What stands, on what evidence, operated by whom, and the open cells"
-status: "Generated from the Lab register (34 records, 509 claim results) and 29 open cells."
+status: "Generated from the Lab register (35 records, 523 claim results) and 29 open cells."
 description: "Every retained Lab claim result as ESTABLISHED, CONTRADICTED, NOT_ESTABLISHED or unknown, with its evidence class, operator and files, and the open mechanism-by-property cells."
 ---
 
@@ -12,13 +12,13 @@ A claim stands only at its record's evidence class; no record here was independe
 
 | verdict | Probity-operated | author-operated | independently operated | all |
 |---|---|---|---|---|
-| ESTABLISHED (`pass`) | 240 | 8 | 0 | **248** |
+| ESTABLISHED (`pass`) | 247 | 8 | 0 | **255** |
 | CONTRADICTED (`fail`) | 147 | 0 | 0 | **147** |
 | unknown, observation unresolved (`unknown`) | 0 | 0 | 0 | **0** |
-| NOT_ESTABLISHED, not exercised (`not-exercised`) | 102 | 7 | 0 | **109** |
-| NOT_ESTABLISHED, out of scope (`out-of-scope`) | 5 | 0 | 0 | **5** |
-| claim results | 494 | 15 | 0 | **509** |
-| records | 32 | 2 | 0 | **34** |
+| NOT_ESTABLISHED, not exercised (`not-exercised`) | 107 | 7 | 0 | **114** |
+| NOT_ESTABLISHED, out of scope (`out-of-scope`) | 7 | 0 | 0 | **7** |
+| claim results | 508 | 15 | 0 | **523** |
+| records | 33 | 2 | 0 | **35** |
 
 ## Verification, host use and paid use
 
@@ -83,6 +83,7 @@ E, C and N count a record's ESTABLISHED, CONTRADICTED and NOT_ESTABLISHED claim 
 | `aeoess-receipt-signature-2026-10-05` | aeoess receipt signature | `source-reported-outside-verifier-and-primitive-checks-on-public-fixtures` | 4 | 0 | 4 | 0 | author-operated | `upstream-merged-retained-run` | [report](experiments/aeoess-receipt-signature-2026-10-05/report.json), [provenance](experiments/aeoess-receipt-signature-2026-10-05/provenance.json) |
 | `w3c-report-replay-2026-10-06` | w3c report replay | `historical-report-accounting-and-separate-diagnostic-control-dependencies` | 5 | 0 | 4 | 0 | Probity-operated | `author-retained-measured-record` | [report](experiments/w3c-report-replay-2026-10-06/report.json), [provenance](experiments/w3c-report-replay-2026-10-06/provenance.json) |
 | `aps-corrected20-2026-10-10` | aps corrected20 | `independently-written-and-operated-reader-on-producer-authored-finite-synthetic-corpus` | 6 | 0 | 8 (2 out of scope) | 0 | Probity-operated | `author-retained-measured-record` | [report](experiments/aps-corrected20-2026-10-10/report.json), [provenance](experiments/aps-corrected20-2026-10-10/provenance.json) |
+| `aps-corrected20-r2-2026-10-27` | aps corrected20 r2 | `independently-written-and-operated-reader-on-producer-authored-finite-synthetic-corpus` | 7 | 0 | 7 (2 out of scope) | 0 | Probity-operated | `author-retained-measured-record` | [report](experiments/aps-corrected20-r2-2026-10-27/report.json), [provenance](experiments/aps-corrected20-r2-2026-10-27/provenance.json) |
 | `trace-m1-consumer-2026-10-11` | trace m1 consumer | `signature-report-binding-and-native-claim-ceiling-on-public-synthetic-inputs` | 5 | 0 | 3 (1 out of scope) | 0 | Probity-operated | `retained-independent-consumer-result` | [report](interop/trace-m1/retained/public-report.json), [provenance](interop/trace-m1/retained/QUALIFICATION.json) |
 | `packslip-dsse-host-ci-2026-10-11` | packslip dsse host ci | `host-project-ci-dependency` | 2 | 0 | 4 | 0 | Probity-operated | `retained-source-bound-observation` | [report](experiments/packslip-dsse-host-ci-2026-10-11/report.json), [provenance](experiments/packslip-dsse-host-ci-2026-10-11/provenance.json) |
 | `horizon-signed-target-reader-2026-10-09` | horizon signed target reader | `outside-hosted-signed-record-reader` | 3 | 1 | 2 | 0 | Probity-operated | `retained-source-bound-observation` | [report](experiments/horizon-signed-target-reader-2026-10-09/report.json), [provenance](experiments/horizon-signed-target-reader-2026-10-09/provenance.json) |
