@@ -6,7 +6,7 @@ Kyverno and sigstore policy-controller policies.
 For integrators who bind a document to release bytes, and platform engineers who gate workloads
 on declared execution evidence.
 
-Verified by Probity (github.com/probityai/probity). The `probityai` command line is planned, not yet released: `uv add probityai`, then `pip install probityai`.
+agent-evidence is the open record format. The `probityai` command checks and grades records against it: `pip install probityai==0.1.0`.
 
 ## Check an artifact digest
 

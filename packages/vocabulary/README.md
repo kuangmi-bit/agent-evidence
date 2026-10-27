@@ -12,7 +12,7 @@ term to mean one thing across vendors, including teams who want to map their own
 
 Install the Python package: `pip install agent-evidence-vocabulary==0.8.0`.
 
-Verified by Probity (github.com/probityai/probity). The `probityai` command line is planned, not yet released: `uv add probityai`, then `pip install probityai`.
+agent-evidence is the open record format. The `probityai` command checks and grades records against it: `pip install probityai==0.1.0`.
 
 ## Quick start
 
