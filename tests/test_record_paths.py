@@ -3,8 +3,13 @@
 Literal roots are built from parts so this file holds none for the repository scans.
 """
 
+import base64
+import gzip
 import importlib.util
+import io
+import re
 import subprocess
+import zipfile
 from pathlib import Path
 
 import pytest
@@ -64,11 +69,75 @@ def test_relativize_rewrites_under_the_root_and_refuses_outside(tmp_path: Path) 
 RECORD_SUFFIXES = (".diff", ".json", ".jsonl", ".log", ".txt", ".stderr", ".stdout", ".xml")
 
 
-def _tracked_records() -> list[Path]:
+def _tracked(*pathspec: str) -> list[Path]:
     out = subprocess.run(
-        ["git", "ls-files", "-z", "site"], cwd=ROOT, capture_output=True, check=True
+        ["git", "ls-files", "-z", *pathspec], cwd=ROOT, capture_output=True, check=True
     ).stdout.decode()
-    return [ROOT / n for n in out.split("\0") if n.endswith(RECORD_SUFFIXES)]
+    return [ROOT / n for n in out.split("\0") if n]
+
+
+def _tracked_records() -> list[Path]:
+    return [p for p in _tracked("site") if p.name.endswith(RECORD_SUFFIXES)]
+
+
+# These files define the path patterns themselves, so they must spell the roots.
+PATTERN_DEFINERS = {
+    "scripts/record_paths.py",
+    "tests/test_record_paths.py",
+    "packages/admission/scripts/host-allowlist-gate.py",
+    "packages/admission/scripts/pre-push-identity-scan.py",
+    "packages/vocabulary/scripts/pre-push-identity-scan.py",
+}
+_B64 = re.compile(rb"[A-Za-z0-9+/_-]{24,}={0,2}")
+
+
+def _decoded_views(data: bytes, name: str, depth: int = 0):
+    """Yield (name, text) for ``data`` and for every archive member or encoded field in it."""
+    binary = data[:2] in (b"\x1f\x8b", b"PK")
+    if not binary:
+        yield name, data.decode("utf-8", errors="replace")
+    if depth > 3:
+        return
+    if data[:2] == b"\x1f\x8b":
+        try:
+            yield from _decoded_views(gzip.decompress(data), name + "!gz", depth + 1)
+        except (OSError, EOFError):
+            pass
+    if data[:2] == b"PK":
+        try:
+            with zipfile.ZipFile(io.BytesIO(data)) as z:
+                for member in z.namelist():
+                    if member.endswith(RECORD_SUFFIXES):
+                        yield from _decoded_views(z.read(member), f"{name}!{member}", depth + 1)
+        except zipfile.BadZipFile:
+            pass
+    for m in ([] if binary else _B64.finditer(data)):
+        raw = m.group()
+        try:
+            decoded = base64.b64decode(raw.replace(b"-", b"+").replace(b"_", b"/")
+                                       + b"=" * (-len(raw) % 4))
+        except ValueError:
+            continue
+        if len(decoded) > 8 and (decoded[:2] in (b"\x1f\x8b", b"PK") or decoded.isascii()):
+            yield from _decoded_views(decoded, name + "!b64", depth + 1)
+
+
+def _leaks(paths: list[Path], *, decode: bool) -> list[str]:
+    leaks = []
+    for path in paths:
+        rel = path.relative_to(ROOT).as_posix()
+        if rel in PATTERN_DEFINERS or not path.is_file():
+            continue
+        data = path.read_bytes()
+        if decode and b"\0" in data[:8192] and data[:2] not in (b"PK", b"\x1f\x8b"):
+            continue
+        views = _decoded_views(data, rel) if decode else [(rel, data.decode("utf-8", "replace"))]
+        for name, text in views:
+            found = (record_paths.find_home_path(text) if decode
+                     else record_paths.find_local_path(text, allow_scratch=True))
+            if found is not None:
+                leaks.append(f"{name}: {found!r}")
+    return leaks
 
 
 def test_the_scan_sees_the_published_records() -> None:
@@ -78,10 +147,18 @@ def test_the_scan_sees_the_published_records() -> None:
 
 
 def test_no_published_record_carries_an_absolute_local_path() -> None:
-    leaks = []
-    for path in _tracked_records():
-        text = path.read_text(encoding="utf-8", errors="replace")
-        found = record_paths.find_local_path(text, allow_scratch=True)
-        if found is not None:
-            leaks.append(f"{path.relative_to(ROOT)}: {found!r}")
+    assert not _leaks(_tracked_records(), decode=False)
+
+
+def test_no_tracked_file_or_encoded_field_carries_an_absolute_local_path() -> None:
+    """Every tracked file, plus zip members, gzip streams and base64 fields inside them."""
+    leaks = _leaks(_tracked(), decode=True)
     assert not leaks, "\n".join(leaks)
+
+
+def test_the_scan_decodes_encoded_fields(tmp_path: Path) -> None:
+    secret = (S + "home" + S + "alice" + S + "w").encode()
+    payload = base64.b64encode(gzip.compress(secret * 3)).decode()
+    names = [n for n, t in _decoded_views(f'{{"x": "{payload}"}}'.encode(), "r.json")
+             if record_paths.find_home_path(t) is not None]
+    assert names, "an encoded home path went unseen"

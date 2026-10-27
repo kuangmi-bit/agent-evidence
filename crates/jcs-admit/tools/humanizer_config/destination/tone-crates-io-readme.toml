@@ -40,10 +40,11 @@ capture_dir = "../_capture/tone-crates-io-readme"
 register_note = """Markdown published inside crate tarballs -- 23 READMEs plus two CHANGELOGs, a CHANGES.md and a CONTRIBUTING.md -- read from the .crate files crates.io serves. Developer documentation: second person, sentence-case headings, an installation or usage block near the top, and inline code font on every type, function, error variant and path. The axis this band exists for is inline-identifier density: the general ceiling of 109.5 spans per 10k prose words is fitted on research papers, and a crate README that satisfied it would name fewer identifiers than every document beside it in the registry. The corpus is dominated by READMEs, so a CHANGELOG or a measurement appendix bound to this band is being read against its nearest measured neighbour rather than against its own kind: a direction, not a validated verdict."""
 
 [source]
-# ABSOLUTE on purpose. `capture_dir` resolves against this TOML; `source.root` does NOT --
+# ABSOLUTE on purpose, so the value below is a placeholder: replace <checkout> with the
+# absolute path of your checkout before running. `capture_dir` resolves against this TOML; `source.root` does NOT --
 # tone_capture._capture_local_dir expands it as given, so a relative root silently resolves
 # against whatever directory the command was run from and reports "is not a readable directory".
-root = "/home/sgilda/Documents/agent-evidence-admission-rs/tools/humanizer_config/_neighbours"
+root = "<checkout>/crates/jcs-admit/tools/humanizer_config/_neighbours"
 glob = "*.md"
 # Re-derive:
 #   for kw in jcs rfc8785 canonicalization attestation in-toto; do

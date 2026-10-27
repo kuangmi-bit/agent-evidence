@@ -12,8 +12,8 @@ import os
 import re
 from pathlib import Path
 
-# Home directories of a hosted CI runner or a gate box name no person.
-CI_HOMES = ("runner", "gate")
+# Home directories of a hosted CI runner, a gate box or a sandbox default user name no person.
+CI_HOMES = ("runner", "gate", "default")
 
 _BOUNDARY = r"(?<![A-Za-z0-9_.:~/\\-])"
 _ROOTS = (
@@ -24,6 +24,7 @@ _ROOTS = (
     rf"{_BOUNDARY}/(?:mnt|blue|root)/",
 )
 _LOCAL = re.compile("|".join(f"(?:{r})" for r in _ROOTS))
+_HOME = re.compile("|".join(f"(?:{r})" for r in _ROOTS[:3]))
 _SCRATCH = re.compile(rf"{_BOUNDARY}/tmp/")
 
 
@@ -39,6 +40,19 @@ def find_local_path(
         scratch = _SCRATCH.search(text)
         if scratch is not None:
             return _context(text, scratch)
+    return None
+
+
+def find_home_path(text: str, *, ci_homes: tuple[str, ...] = CI_HOMES) -> str | None:
+    """Return the first person's home directory path in ``text``, or None.
+
+    Narrower than :func:`find_local_path`: ``~/``, ``/mnt`` and ``/tmp`` also occur in
+    prose and in third-party sources, so the whole-tree scan refuses only home directories.
+    """
+    for found in _HOME.finditer(text):
+        if found.groupdict().get("user") in ci_homes:
+            continue
+        return _context(text, found)
     return None
 
 
