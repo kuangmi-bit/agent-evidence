@@ -27,7 +27,7 @@ as they read on 2026-09-30.
 | `observation_directness` | whether the record was captured live or reconstructed from state left behind |
 | `witness_scope` | whose account the record is; the external witness a completeness claim was reconciled against would carry `EXTERNAL` |
 | `field_evidence_partition` | which of the six governance-context fields the operator asserted and which an outside observation covers |
-| `issuance_time_basis` | that the signature cannot predate a public beacon round; the `commitment_anchor` field proposed in a comment on the standard's issue gives the other bound |
+| `issuance_time_basis` | that the signature cannot predate a public beacon round; `commitment_anchor` (mapped in the crosswalk, from the draft SC-OB-01 clause) gives the other bound |
 | `containment_posture` | the network posture of the environment the agent ran in |
 
 ## Two notes on the proposal text

@@ -30,7 +30,7 @@
 system: "Observability evidence field set proposed for v1.1 of the Raknor Agent Governance Standard and the Agent Governance Scorecard"
 system_url: "https://github.com/raknor-ai/agent-governance-standard/issues/2"
 crosswalk_version: "0.1.0"
-vocabulary_version_targeted: "0.3.0"
+vocabulary_version_targeted: "0.8.0"
 
 maintainer:
   github: "astrogilda"
@@ -103,13 +103,42 @@ evidence_dimensions:
   issuance_time_basis:
     match: no_mapping
     notes: >
-      The candidate set has no timing field. A comment on the standard's issue
-      (raknor-ai/agent-governance-standard#2, issuecomment-5902784028) proposes
-      commitment_anchor, a digest committed to an external clock, which proves a
-      record existed no later than the anchor. That is the opposite bound to
-      this term, which proves a signature cannot predate a public beacon round.
-      The two compose: a record carrying both has its signing time bracketed
-      from both sides. Neither is in the proposal as filed.
+      The candidate set has no timing field. commitment_anchor, below, is the
+      opposite bound to this term, which proves a signature cannot predate a
+      public beacon round. The two compose: a record carrying both has its
+      signing time bracketed from both sides.
+
+  commitment_anchor:
+    match: partial
+    evidence: asserted
+    source_path: "https://github.com/raknor-ai/agent-governance-standard/blob/a71192866cb430f46b9561a1118e37f2b7a856cd/conformance/v1.1-draft/sc-ob-01-commitment-anchor.md"
+    source_quote: >
+      "A decision record that asserts it existed before its outcome SHALL carry a
+      commitment_anchor and SHALL satisfy the precedence rule. A record that does
+      not establish precedence SHALL declare precedence_before_outcome in
+      does_not_assert." The file is a draft clause under SC-OB-01, linked to this
+      registry's entry at 36056a3bcb09 (vocabulary 0.7.0), and stays non-normative
+      until the v1.1 disposition after 2026-11-30. It is not part of the
+      candidate set the rest of this filing maps. It entered through a comment on
+      the standard's issue (issuecomment-5902784028) and was placed under SC-OB-01
+      on 2026-10-25.
+    divergences:
+      - >
+        The rule that fixes the ceiling. Here an anchored value is proven only
+        under the anchor_time_rule the record states (header_time_plus_tolerance,
+        later_median or height), and an absent rule is read as
+        header_time_plus_tolerance, which for a Bitcoin anchor is a convention
+        and not a bound. The clause says "the precedence rule" and does not name
+        anchor_time_rule or that default; both sit in the pinned vectors it
+        references, babyblueviper1/preaction-governance-conformance at e12d3e9.
+      - >
+        The value set. Here commitment_anchor takes anchored or asserted, and
+        asserted must not be read as a ceiling. The clause reaches the same
+        place by requiring a declared limitation, with no value to compare.
+      - >
+        The digest. Here the anchored digest must recompute from the record
+        under a named deterministic procedure, or the record has no anchor. The
+        clause leaves digest_rule to the pinned vectors.
 
 posture_and_coverage:
 
