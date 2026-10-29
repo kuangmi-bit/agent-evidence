@@ -63,6 +63,11 @@ jobs:
         run: uv run --frozen --only-group dev ruff check .
       - name: the repository tools' tests
         run: uv run --frozen --only-group dev python -m pytest
+      - name: the request/effect fixture contract and its reader agree
+        working-directory: site/examples/request-effect-join
+        run: |
+          python3 run_contract.py --check
+          python3 -m unittest discover -s tests -v
       - name: the jcs-admit wheel release check refuses every fault it names
         run: python3 scripts/check-jcs-admit-python-release-test.py
       - name: the DCO sign-off rule
